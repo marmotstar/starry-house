@@ -62,7 +62,7 @@
         </div>
     </main>
 
-    <section id="rooms" class="py-20 bg-white">
+   <section id="rooms" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">客房資訊</h3>
             
@@ -75,11 +75,10 @@
                 <div class="flex flex-wrap justify-center gap-4 mb-10 text-sm text-slate-500">
                     <span class="flex items-center">✅ 每間房皆面向景觀</span>
                     <span class="flex items-center">✅ 24H 全天供應熱水</span>
-                    <span class="flex items-center">✅ 均附全套衛浴與電毯</span>
                     <span class="flex items-center text-rose-600 font-bold">🚫 全館禁菸</span>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col">
                         <div class="p-6 bg-sky-900 text-white flex justify-between items-center">
                             <h4 class="text-xl font-bold">兩人套房</h4>
@@ -88,13 +87,12 @@
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
                                 <li>床型：5x6 雙人床一張</li>
-                                <li>地板：質感木質地板</li>
-                                <li>衛浴：採淋浴式衛浴</li>
+                                <li>加床：<span class="text-slate-400">本房型不提供加床</span></li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日 (日~五)</span><span class="font-bold text-sky-700">$2,900</span></div>
-                                <div class="flex justify-between"><span>假日 (週六/連假)</span><span class="font-bold text-sky-700">$3,700</span></div>
-                                <div class="flex justify-between text-slate-400"><span>定價 (春節)</span><span>$4,500</span></div>
+                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$2,900</span></div>
+                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$3,700</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$4,500</span></div>
                             </div>
                         </div>
                     </div>
@@ -107,13 +105,12 @@
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
                                 <li>床型：5x6 雙人床兩張</li>
-                                <li>加床：平日/假日加床 +$500</li>
-                                <li>衛浴：採淋浴式衛浴</li>
+                                <li class="text-sky-700 font-bold">加床：最多可加 1 床</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日 (日~五)</span><span class="font-bold text-sky-700">$3,900</span></div>
-                                <div class="flex justify-between"><span>假日 (週六/連假)</span><span class="font-bold text-sky-700">$5,100</span></div>
-                                <div class="flex justify-between text-slate-400"><span>定價 (春節)</span><span>$5,700</span></div>
+                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$3,900</span></div>
+                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$5,100</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$5,700</span></div>
                             </div>
                         </div>
                     </div>
@@ -126,92 +123,132 @@
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
                                 <li>床型：5x6 雙人床三張</li>
-                                <li>衛浴：採淋浴式衛浴</li>
-                                <li>地板：質感木質地板</li>
+                                <li class="text-sky-700 font-bold">加床：最多可加 1 床</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日 (日~五)</span><span class="font-bold text-sky-700">$4,800</span></div>
-                                <div class="flex justify-between"><span>假日 (週六/連假)</span><span class="font-bold text-sky-700">$6,300</span></div>
-                                <div class="flex justify-between text-slate-400"><span>定價 (春節)</span><span>$6,900</span></div>
+                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$4,800</span></div>
+                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$6,300</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$6,900</span></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col lg:col-span-2">
-                        <div class="p-6 bg-slate-800 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">家庭八人房 (大型團體首選)</h4>
-                            <span class="text-xs bg-slate-600 px-2 py-1 rounded">雙衛浴配置</span>
+                    <div class="bg-slate-100 rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col">
+                        <div class="p-6 bg-slate-700 text-white flex justify-between items-center">
+                            <h4 class="text-xl font-bold">八人房</h4>
+                            <span class="text-xs bg-slate-500 px-2 py-1 rounded">兩間衛浴</span>
                         </div>
-                        <div class="p-6 flex-grow grid md:grid-cols-2 gap-8">
-                            <ul class="text-sm text-slate-600 space-y-2">
-                                <li><span class="font-bold text-sky-900">房型特色：</span>寬敞大空間，適合大家庭或好友聚會。</li>
-                                <li><span class="font-bold text-sky-900">衛浴設備：</span>設有兩間獨立衛浴，使用不擁擠。</li>
-                                <li><span class="font-bold text-sky-900">加床服務：</span>最多可加一床至 9 位入住。</li>
+                        <div class="p-6 flex-grow">
+                            <ul class="text-sm text-slate-600 space-y-2 mb-6">
+                                <li>特色：設有兩間獨立衛浴</li>
+                                <li class="text-sky-800 font-bold">加床：最多加 1 床 (至 9 位)</li>
                             </ul>
-                            <div class="space-y-2 border-t md:border-t-0 md:border-l md:pl-8 pt-4 md:pt-0">
-                                <div class="flex justify-between"><span>平日 (日~五)</span><span class="font-bold text-sky-700">$6,300</span></div>
-                                <div class="flex justify-between"><span>假日 (週六/連假)</span><span class="font-bold text-sky-700">$7,700</span></div>
-                                <div class="flex justify-between text-slate-400"><span>定價 (春節)</span><span>$8,300</span></div>
+                            <div class="space-y-2 border-t pt-4">
+                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-800">$5,800</span></div>
+                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-800">$7,200</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$7,800</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+                        <div class="p-6 bg-amber-800 text-white flex justify-between items-center">
+                            <h4 class="text-xl font-bold">家庭八人房</h4>
+                            <span class="text-xs bg-amber-700 px-2 py-1 rounded">寬敞景觀</span>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <ul class="text-sm text-slate-600 space-y-2 mb-6">
+                                <li>特色：空間最寬敞，採光優異</li>
+                                <li class="text-amber-700 font-bold">加床：最多加 1 床 (至 9 位)</li>
+                            </ul>
+                            <div class="space-y-2 border-t pt-4">
+                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-amber-800">$6,300</span></div>
+                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-amber-800">$7,700</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$8,300</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-12 bg-slate-50 p-6 rounded-xl text-center">
-                    <p class="text-slate-500 text-sm">客房設施：有線電視、WIFI、浴巾、盥洗用品、吹風機、電熱毯、梳妝台、電水壺</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">💰</span> 加床費用說明</h4>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex justify-between pb-2 border-b border-slate-50">
+                                <span>平日、假日</span><span class="font-bold text-sky-700">$500 / 床</span>
+                            </li>
+                            <li class="flex justify-between pb-2 border-b border-slate-50">
+                                <span>節日 (春節年假)</span><span class="font-bold text-rose-600">$600 / 床</span>
+                            </li>
+                        </ul>
+                        <p class="text-xs text-slate-400 mt-4 leading-relaxed">※ 請注意各房型加床上限，為維護住宿品質，恕無法提供超過上限之加床服務。</p>
+                    </div>
+
+                    <div class="bg-sky-50 p-8 rounded-2xl border border-sky-100">
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">🗓️</span> 平假日定義說明</h4>
+                        <ul class="text-sm space-y-3 text-slate-600">
+                            <li><span class="font-bold text-sky-800">平日：</span>星期日至星期五</li>
+                            <li><span class="font-bold text-sky-800">假日：</span>週六、連續假日及國定假日</li>
+                            <li><span class="font-bold text-rose-600">節日：</span>農曆春節年假期間</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div id="booking-info" class="tab-content max-w-4xl mx-auto bg-slate-50 p-6 md:p-12 rounded-2xl shadow-inner">
-                <div class="space-y-8 text-slate-700">
-                    
+            <div id="booking-info" class="tab-content max-w-4xl mx-auto space-y-8">
+                <div class="bg-slate-50 p-6 md:p-12 rounded-2xl shadow-inner space-y-8 text-slate-700">
                     <div class="grid md:grid-cols-2 gap-8 border-b border-slate-200 pb-8">
                         <div class="space-y-3">
                             <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🕒</span> 進退房時間</h4>
-                            <p class="text-sm pl-7">進房時間：下午 2:30 以後</p>
-                            <p class="text-sm pl-7">退房時間：上午 10:30 以前</p>
+                            <p class="text-sm">進房時間：下午 2:30 以後</p>
+                            <p class="text-sm">退房時間：上午 10:30 以前</p>
                         </div>
-                        <div class="space-y-3">
-                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🍳</span> 房價與膳食</h4>
-                            <p class="text-sm pl-7">所有訂房均附贈西式早餐</p>
-                            <p class="text-sm pl-7 text-rose-600 font-bold underline">官網房價皆為未稅價</p>
+                        <div class="space-y-3 text-sm">
+                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🍳</span> 膳食與稅務</h4>
+                            <p>訂房均附贈早餐</p>
+                            <p class="font-bold text-rose-600 underline">官網房價皆為未稅價</p>
                         </div>
                     </div>
 
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500">
-                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">💰</span> 訂金與確認程序</h4>
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">📜</span> 匯款確認手續</h4>
                         <ol class="list-decimal pl-5 space-y-3 text-sm md:text-base">
-                            <li>訂房訂金請匯款房價的 <span class="font-bold text-amber-600">1/2</span>。</li>
-                            <li>請於訂房後 <span class="font-bold text-amber-600">【三天內】</span> 完成匯款。</li>
-                            <li>匯款後請經由 <span class="font-bold">電話或 Email</span> 完成確認手續（註明房型、日期、姓名、電話），否則房間不予保留，亦不另行通知。</li>
-                            <li>每日 17:00 前對於未完成確認手續的訂房，本園保有【取消訂房】之權利。</li>
+                            <li>訂房訂金請匯款房價之 <span class="font-bold text-amber-600">1/2</span>。</li>
+                            <li>請於訂房後 <span class="font-bold text-amber-600">【三天內】</span> 完成匯款，並以電話或 Email 確認手續。</li>
+                            <li>確認時請註明：<span class="font-bold">預訂房型、日期、姓名、聯絡電話</span>。</li>
+                            <li class="text-slate-500">逾期未確認或每日 17:00 前未完成確認者，本園保有取消權利。</li>
                         </ol>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">📋</span> 取消入住退款標準</h4>
-                        <p class="text-xs text-slate-500 mb-4 leading-relaxed">
-                            依據南投縣政府「府觀管字第1020010092號函」辦理，如非因不可抗拒之因素取消，退還訂金比例：
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>14天前通知</span><span class="font-bold text-green-600">100%</span></div>
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>10-13天前通知</span><span class="font-bold">70%</span></div>
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>7-9天前通知</span><span class="font-bold">50%</span></div>
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>4-6天前通知</span><span class="font-bold">40%</span></div>
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>2-3天前通知</span><span class="font-bold">30%</span></div>
-                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100"><span>1天前通知</span><span class="font-bold">20%</span></div>
-                            <div class="flex justify-between p-3 bg-amber-50 rounded border border-amber-200 sm:col-span-2 text-amber-800">
-                                <span>入住當天通知或未入住者</span><span class="font-bold">不退還訂金</span>
+                        <h4 class="font-bold text-sky-900 mb-6 flex items-center"><span class="mr-2">📋</span> 取消入住退還訂金比例</h4>
+                        <p class="text-xs text-slate-500 mb-4">依據南投縣政府「府觀管字第1020010092號函」辦理：</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 14 天通知</span><span class="font-bold text-green-600">退還 100%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 10-13 天通知</span><span class="font-bold text-slate-700">退還 70%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 7-9 天通知</span><span class="font-bold text-slate-700">退還 50%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 4-6 天通知</span><span class="font-bold text-slate-700">退還 40%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 2-3 天通知</span><span class="font-bold text-slate-700">退還 30%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
+                                <span>入住前 1 天通知</span><span class="font-bold text-slate-700">退還 20%</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-amber-50 rounded border border-amber-200 text-amber-800 text-sm font-bold">
+                                <span>入住當天通知或未入住者</span><span>不退還訂金</span>
                             </div>
                         </div>
                     </div>
-
-                    <p class="text-xs text-slate-400 text-center italic mt-6">
-                        為確保權益，訂房前請詳閱上述說明。觀星園祝您旅途愉快！
-                    </p>
                 </div>
             </div>
-
         </div>
     </section>
 	
