@@ -19,6 +19,7 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .tab-btn.active { border-bottom: 4px solid #0284c7; color: #0284c7; }
+        /* 增加連結點擊時的視覺回饋 */
         .contact-link:hover { color: #facc15; text-decoration: underline; }
     </style>
 </head>
@@ -27,7 +28,7 @@
     <nav class="bg-sky-900 text-white p-4 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
             <h1 class="text-2xl font-bold tracking-wider mb-4 lg:mb-0">清境觀星園景觀山莊</h1>
-            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sky-200 font-medium">
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sky-200 font-medium text-sm md:text-base">
                 <li><a href="#" class="hover:text-white transition">首頁</a></li>
                 <li><a href="#about" class="hover:text-white transition">關於我們</a></li>
                 <li><a href="#rooms" class="hover:text-white transition">客房資訊</a></li>
@@ -47,7 +48,112 @@
         </div>
     </header>
 
+    <section id="about" class="py-16 container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-8 text-sky-950">關於觀星園</h3>
+            <div class="space-y-6 text-slate-600 text-lg leading-relaxed">
+                <p>清境觀星園座落於台14甲線旁，海拔 2106 公尺，是清境最高的民宿之一。</p>
+                <p>擁有 180 度的全視野景觀，正對著合歡山及奇萊山各山峰。白天看雲海，夜晚觀繁星。</p>
+                <div class="p-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 font-bold inline-block mt-4">
+                    [ 新官網建置中，訂房請直接電話或 Email 洽詢，謝謝！ ]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rooms" class="py-20 bg-white">
+    <section id="rooms" class="py-20 bg-white shadow-inner">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">客房資訊</h3>
+            <div class="flex justify-center border-b border-slate-200 mb-10">
+                <button onclick="openTab(event, 'room-types')" class="tab-btn active px-8 py-3 font-bold text-lg hover:text-sky-600 transition">房型介紹</button>
+                <button onclick="openTab(event, 'booking-info')" class="tab-btn px-8 py-3 font-bold text-lg hover:text-sky-600 transition">訂房說明</button>
+            </div>
+
+            <div id="room-types" class="tab-content active">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="h-48 bg-sky-200 flex items-center justify-center text-sky-600 text-4xl">🛏️</div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 text-sky-900">兩人套房 (8坪)</h4>
+                            <p class="text-sm text-slate-500 mb-4">5*6雙人床 / 淋浴衛浴 / 觀景窗</p>
+                            <div class="text-sky-800 font-bold">
+                                <p>平日: $2,900 / 假日: $3,700</p>
+                            </div>
+                        </div>
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100 p-6">
+                        <div class="text-4xl mb-4">🛏️</div>
+                        <h4 class="text-xl font-bold mb-2 text-sky-900">兩人套房 (8坪)</h4>
+                        <p class="text-sm text-slate-500 mb-4">5*6雙人床 / 淋浴衛浴 / 觀景窗</p>
+                        <p class="text-sky-800 font-bold">平日: $2,900 / 假日: $3,700</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="h-48 bg-sky-200 flex items-center justify-center text-sky-600 text-4xl">🛏️🛏️</div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 text-sky-900">四人套房 (12坪)</h4>
+                            <p class="text-sm text-slate-500 mb-4">5*6雙人床兩張 / 可加床 / 觀景窗</p>
+                            <div class="text-sky-800 font-bold">
+                                <p>平日: $3,900 / 假日: $5,100</p>
+                            </div>
+                        </div>
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100 p-6">
+                        <div class="text-4xl mb-4">🛏️🛏️</div>
+                        <h4 class="text-xl font-bold mb-2 text-sky-900">四人套房 (12坪)</h4>
+                        <p class="text-sm text-slate-500 mb-4">5*6雙人床兩張 / 可加床 / 觀景窗</p>
+                        <p class="text-sky-800 font-bold">平日: $3,900 / 假日: $5,100</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="h-48 bg-sky-200 flex items-center justify-center text-sky-600 text-4xl">🏠</div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 text-sky-900">家庭八人房</h4>
+                            <p class="text-sm text-slate-500 mb-4">大空間 / 兩間衛浴 / 面向景觀</p>
+                            <div class="text-sky-800 font-bold">
+                                <p>平日: $6,300 / 假日: $7,700</p>
+                            </div>
+                        </div>
+                    <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-slate-100 p-6">
+                        <div class="text-4xl mb-4">🏠</div>
+                        <h4 class="text-xl font-bold mb-2 text-sky-900">家庭八人房</h4>
+                        <p class="text-sm text-slate-500 mb-4">大空間 / 兩間衛浴 / 面向景觀</p>
+                        <p class="text-sky-800 font-bold">平日: $6,300 / 假日: $7,700</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="booking-info" class="tab-content max-w-3xl mx-auto bg-slate-50 p-8 rounded-2xl">
+                <ul class="space-y-4 list-decimal pl-6 text-slate-700">
+                    <li>訂房均附早餐。進房 14:30 後 / 退房 10:30 前。</li>
+                    <li>訂房後請於 3 天內匯款房價 1/2 為訂金。</li>
+                    <li>官網房價皆為未稅價。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="food" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">特色餐飲</h3>
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-600">
+                    <h4 class="text-2xl font-bold mb-6 flex items-center">☕ 早餐服務</h4>
+                    <p class="text-slate-600 leading-loose">住宿旅客皆可享用美味的西式早餐。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-600">
+                    <h4 class="text-2xl font-bold mb-6 flex items-center">🍲 特色晚餐</h4>
+                    <p class="text-sm text-amber-600 font-bold mb-4">※ 僅供房客預訂，最遲於入住前一天預訂</p>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex justify-between border-b pb-2"><span>東北酸白菜火鍋 (2人份)</span> <span class="font-bold">$700</span></li>
+                        <li class="flex justify-between border-b pb-2"><span>紅燒羊肉鍋 (2人份)</span> <span class="font-bold">$800</span></li>
+                        <li class="flex justify-between border-b pb-2"><span>養生藥膳火鍋 (2人份)</span> <span class="font-bold">$700</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="traffic" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">交通指引</h3>
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-3xl font-bold mb-12 text-sky-950">交通指引</h3>
             <div class="max-w-4xl mx-auto space-y-10">
@@ -55,59 +161,72 @@
                     <div>
                         <h4 class="font-bold text-xl mb-4 text-sky-800">自行開車</h4>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            台14甲線 12.4k 處，過博望新村 10 公尺，右側指標上坡即達觀星園。
+                            過「青青草原」上行 2 公里 (台14甲線 12.4k)，過博望新村 10 公尺，右側指標上坡即達觀星園。
                         </p>
                     </div>
                     <div>
                         <h4 class="font-bold text-xl mb-4 text-sky-800">大眾運輸</h4>
                         <p class="text-slate-600 text-sm leading-relaxed">
+                            搭乘客運往清境農場方向，於「松崗站」下車，請來電通知山莊前往接駁。
                             搭乘客運至「松崗站」下車，請來電通知山莊前往接駁。
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="rounded-2xl overflow-hidden shadow-2xl h-96 border border-slate-200">
-    <iframe 
-        width="100%" 
-        height="100%" 
-        style="border:0" 
-        loading="lazy" 
-        allowfullscreen 
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.539354884735!2d121.17078180000001!3d24.0760822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468ea20737352bf%3A0x64631b5574d4bacf!2z5riF5aKD6KeA5pif5ZyS5pmv6KeA5bGx6I6K!5e1!3m2!1szh-TW!2stw!4v1768036439627!5m2!1szh-TW!2stw">
-    </iframe>
-</div>
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0" 
+                        loading="lazy" 
+                        allowfullscreen 
+                        src="https://www.google.com/maps?q=清境觀星園景觀山莊&output=embed">
+                        width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.539354884735!2d121.17078180000001!3d24.0760822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468ea20737352bf%3A0x64631b5574d4bacf!2z5riF5aKD6KeA5pif5ZyS5pmv6KeA5bGx6I6K!5e1!3m2!1szh-TW!2stw!4v1768036439627!5m2!1szh-TW!2stw">
+                    </iframe>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="https://maps.google.com/?cid=7233655480333417167&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="bg-sky-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-sky-700 transition">
+                        直接開啟 Google 地圖查看商家地標
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer id="contact" class="bg-sky-950 text-white py-16">
         <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-8 italic text-sky-200">清境最高視野 ‧ 觀星園</h3>
             <h3 class="text-2xl font-bold mb-10 italic text-sky-200">清境最高視野 ‧ 觀星園</h3>
-            <div class="grid md:grid-cols-3 gap-12 text-sm md:text-base mb-12">
+            <div class="grid md:grid-cols-3 gap-8 text-sm md:text-base mb-12">
                 
-                <div class="space-y-3">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">山莊地址</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=清境觀星園景觀山莊" target="_blank" class="contact-link transition block">
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Address</p>
+                    <p>南投縣仁愛鄉大同村博望巷96號</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=清境觀星園景觀山莊" target="_blank" class="contact-link transition duration-300">
                         南投縣仁愛鄉大同村博望巷96號
                     </a>
                 </div>
 
-                <div class="space-y-3">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">聯絡電話</p>
-                    <div class="flex flex-col space-y-2">
-                        <a href="tel:0492802242" class="contact-link transition">049-2802242</a>
-                        <a href="tel:0919713201" class="contact-link transition">0919-713201 (手機)</a>
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Phone</p>
+                    <p>049-2802242 / 0919-713201</p>
+                    <div class="flex flex-col space-y-1">
+                        <a href="tel:0492802242" class="contact-link transition duration-300">049-2802242</a>
+                        <a href="tel:0919713201" class="contact-link transition duration-300">0919-713201 (手機)</a>
                     </div>
                 </div>
 
-                <div class="space-y-3">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">電子郵件</p>
-                    <a href="mailto:hclee0701@yahoo.com.tw" class="contact-link transition block">
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">E-mail</p>
+                    <p>hclee0701@yahoo.com.tw</p>
+                    <a href="mailto:hclee0701@yahoo.com.tw" class="contact-link transition duration-300">
                         hclee0701@yahoo.com.tw
                     </a>
                 </div>
 
             </div>
+            <p class="text-xs text-sky-800">© 2026 清境觀星園景觀山莊 | 新官網建置中</p>
             <p class="text-xs text-sky-800 pt-8 border-t border-sky-900">© 2026 清境觀星園景觀山莊 | 新官網建置中</p>
         </div>
     </footer>
@@ -129,4 +248,3 @@
     </script>
 </body>
 </html>
-
