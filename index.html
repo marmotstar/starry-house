@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>清境觀星園景觀山莊 | 海拔2106公尺的雲端際會</title>
+    <title data-i18n="doc_title">清境觀星園景觀山莊 | 海拔2106公尺的雲端際會</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: "Microsoft JhengHei", "Heiti TC", sans-serif; scroll-behavior: smooth; }
@@ -26,14 +26,19 @@
 
     <nav class="bg-sky-900 text-white p-4 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-wider mb-4 lg:mb-0">清境觀星園景觀山莊</h1>
-            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sky-200 font-medium">
-                <li><a href="#" class="hover:text-white transition">首頁</a></li>
-                <li><a href="#about" class="hover:text-white transition">關於我們</a></li>
-                <li><a href="#rooms" class="hover:text-white transition">客房資訊</a></li>
-                <li><a href="#food" class="hover:text-white transition">特色餐飲</a></li>
-                <li><a href="#traffic" class="hover:text-white transition">交通指引</a></li>
-                <li><a href="#contact" class="hover:text-white transition">聯絡我們</a></li>
+            <h1 class="text-2xl font-bold tracking-wider mb-4 lg:mb-0" data-i18n="nav_brand">清境觀星園景觀山莊</h1>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sky-200 font-medium items-center">
+                <li><a href="#" class="hover:text-white transition" data-i18n="nav_home">首頁</a></li>
+                <li><a href="#about" class="hover:text-white transition" data-i18n="nav_about">關於我們</a></li>
+                <li><a href="#rooms" class="hover:text-white transition" data-i18n="nav_rooms">客房資訊</a></li>
+                <li><a href="#food" class="hover:text-white transition" data-i18n="nav_food">特色餐飲</a></li>
+                <li><a href="#traffic" class="hover:text-white transition" data-i18n="nav_traffic">交通指引</a></li>
+                <li><a href="#contact" class="hover:text-white transition" data-i18n="nav_contact">聯絡我們</a></li>
+                <li class="ml-4">
+                    <button onclick="toggleLanguage()" id="langBtn" class="bg-sky-700 text-white px-3 py-1 rounded-full text-xs border border-sky-500 hover:bg-sky-600 transition font-bold shadow-sm">
+                        English
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -41,69 +46,69 @@
     <header class="hero-bg h-[60vh] relative">
         <div class="hero-overlay absolute inset-0 flex items-center justify-center text-white text-center px-4">
             <div class="max-w-4xl">
-                <p class="text-sky-300 text-xl font-bold tracking-[0.2em] mb-4">海拔 2106 公尺</p>
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white">擁抱合歡群峰<br>漫步雲端星空下</h2>
+                <p class="text-sky-300 text-xl font-bold tracking-[0.2em] mb-4" data-i18n="hero_alt">海拔 2106 公尺</p>
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white" data-i18n="hero_title">擁抱合歡群峰<br>漫步雲端星空下</h2>
             </div>
         </div>
     </header>
 
-   <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-sky-950">雲端際會，絕美觀星</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-sky-950" data-i18n="about_title">雲端際會，絕美觀星</h3>
                     <div class="w-24 h-1 bg-sky-600 mx-auto"></div>
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6 text-slate-700 leading-loose">
-                        <p>
-                            觀星園位於海拔 <span class="font-bold text-sky-700 underline decoration-sky-300 decoration-2 underline-offset-4">2106 公尺</span> 的清境高地，是當地最高的景觀山莊。這裡遠離公路噪音，全年平均氣溫約 16℃，讓您在純淨無污染的清新空氣中，感受大自然瞬息萬變的神奇。
+                        <p data-i18n="about_p1">
+                            觀星園座落於台14甲線旁，海拔 <span class="font-bold text-sky-700 underline decoration-sky-300 decoration-2 underline-offset-4">2106 公尺</span>，是清境最高的景觀山莊。這裡遠離公路噪音，全年平均氣溫約 16℃，讓您在純淨無污染的清新空氣中，感受大自然瞬息萬變的神奇。
                         </p>
-                        <p>
+                        <p data-i18n="about_p2">
                             我們的每間客房均設有 <span class="font-bold text-sky-700">180 度觀景陽台</span>，足以飽覽合歡山、奇萊山、能高山及玉山群峰的壯麗。不論是清晨翻騰的雲海霧瀑，或是入夜後璀璨的月影繁星，山明雲秀的絕景盡收眼底。
                         </p>
-                        <p>
-                            山莊鄰近台大梅峰農場，距台灣公路最高點「武嶺」僅 19 公里。近旁更有 <span class="font-bold">立鷹峰原始森林步道</span>，步行一圈約 40～60 分鐘，是您健行探幽、賞鳥觀景，享受芬多精森林浴的絕佳路徑。
+                        <p data-i18n="about_p3">
+                            山莊鄰近台大梅峰農場，距台灣公路最高點「武嶺」僅 19 公里。近旁更有 <span class="font-bold text-sky-900">立鷹峰原始森林步道</span>，步行一圈約 40～60 分鐘，是您健行探幽、賞鳥觀景，享受芬多精森林浴的絕佳路徑。
                         </p>
                         
                         <div class="flex flex-wrap gap-4 pt-4">
                             <a href="https://www.facebook.com/starryhouse.nantou/" target="_blank" class="flex items-center px-5 py-2 bg-[#1877F2] text-white rounded-full hover:bg-blue-700 transition shadow-md text-sm">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"></path></svg>
-                                Facebook
+                                <span>Facebook</span>
                             </a>
                             <a href="https://www.instagram.com/hclee0701/" target="_blank" class="flex items-center px-5 py-2 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white rounded-full hover:shadow-lg transition shadow-md text-sm">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                                Instagram
+                                <span>Instagram</span>
                             </a>
                             <a href="https://line.me/ti/p/~0919713201" target="_blank" class="flex items-center px-5 py-2 bg-[#00B900] text-white rounded-full hover:bg-[#009900] transition shadow-md text-sm">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 5.45 2 9.7c0 2.15 1.13 4.15 3 5.6-.2.7-.75 2.5-.85 2.9-.1.45.15.45.3.35.15-.1 2.35-1.55 3.3-2.2.4.1.85.15 1.25.15 5.52 0 10-3.45 10-7.7S17.52 2 12 2z"/>
                                 </svg>
-                                LINE 立即諮詢
+                                <span data-i18n="btn_line">LINE 立即諮詢</span>
                             </a>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 gap-6">
                         <div class="bg-sky-50 p-6 rounded-2xl border border-sky-100 shadow-sm">
-                            <h5 class="font-bold text-sky-900 mb-2">🏔️ 巔峰視野</h5>
-                            <p class="text-sm text-slate-600">對望合歡、奇萊、能高與玉山群峰，180度視野無遮蔽。</p>
+                            <h5 class="font-bold text-sky-900 mb-2" data-i18n="about_card1_t">🏔️ 巔峰視野</h5>
+                            <p class="text-sm text-slate-600" data-i18n="about_card1_d">對望合歡、奇萊、能高與玉山群峰，180度視野無遮蔽。</p>
                         </div>
                         <div class="p-6 rounded-2xl border border-slate-100 shadow-sm">
-                            <h5 class="font-bold text-slate-800 mb-2">🚗 交通便利</h5>
-                            <p class="text-sm text-slate-600">備有大型停車場，位於清境草原上方 2 公里，前行 3 公里即達梅峰農場。</p>
+                            <h5 class="font-bold text-slate-800 mb-2" data-i18n="about_card2_t">🚗 交通便利</h5>
+                            <p class="text-sm text-slate-600" data-i18n="about_card2_d">備有大型停車場，位於清境草原上方 2 公里，前行 3 公里即達梅峰農場。</p>
                         </div>
                         <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100 shadow-sm">
-                            <h5 class="font-bold text-amber-900 mb-2">✨ 森林體驗</h5>
-                            <p class="text-sm text-slate-600">結合探幽、賞鳥、觀賞奇花野草，提供最高品質的高山放鬆享受。</p>
+                            <h5 class="font-bold text-amber-900 mb-2" data-i18n="about_card3_t">✨ 森林體驗</h5>
+                            <p class="text-sm text-slate-600" data-i18n="about_card3_d">結合探幽、賞鳥、觀賞奇花野草，提供最高品質的高山放鬆享受。</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="mt-16 text-center">
                     <div class="p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl inline-block">
-                        <p class="text-slate-500 font-bold">
+                        <p class="text-slate-500 font-bold" data-i18n="about_construction">
                             [ 新官網建置中，訂房與詢問請直接撥打電話，謝謝您的體諒！ ]
                         </p>
                     </div>
@@ -112,109 +117,109 @@
         </div>
     </section>
 
-   <section id="rooms" class="py-20 bg-white">
+    <section id="rooms" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">客房資訊</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950" data-i18n="nav_rooms">客房資訊</h3>
             
             <div class="flex justify-center border-b border-slate-200 mb-10">
-                <button onclick="openTab(event, 'room-types')" class="tab-btn active px-6 md:px-12 py-3 font-bold text-lg hover:text-sky-600 transition">房型介紹</button>
-                <button onclick="openTab(event, 'booking-info')" class="tab-btn px-6 md:px-12 py-3 font-bold text-lg hover:text-sky-600 transition">訂房說明</button>
+                <button onclick="openTab(event, 'room-types')" class="tab-btn active px-6 md:px-12 py-3 font-bold text-lg hover:text-sky-600 transition" data-i18n="room_tab_1">房型介紹</button>
+                <button onclick="openTab(event, 'booking-info')" class="tab-btn px-6 md:px-12 py-3 font-bold text-lg hover:text-sky-600 transition" data-i18n="room_tab_2">訂房說明</button>
             </div>
 
             <div id="room-types" class="tab-content active">
                 <div class="flex flex-wrap justify-center gap-4 mb-10 text-sm text-slate-500">
-                    <span class="flex items-center">✅ 每間房皆面向景觀</span>
-                    <span class="flex items-center">✅ 24H 全天供應熱水</span>
-                    <span class="flex items-center text-rose-600 font-bold">🚫 全館禁菸</span>
+                    <span class="flex items-center" data-i18n="room_feat_1">✅ 每間房皆面向景觀</span>
+                    <span class="flex items-center" data-i18n="room_feat_2">✅ 24H 全天供應熱水</span>
+                    <span class="flex items-center text-rose-600 font-bold" data-i18n="room_feat_3">🚫 全館禁菸</span>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col">
                         <div class="p-6 bg-sky-900 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">兩人套房</h4>
-                            <span class="text-xs bg-sky-700 px-2 py-1 rounded">約 8 坪</span>
+                            <h4 class="text-xl font-bold" data-i18n="room_2_t">兩人套房</h4>
+                            <span class="text-xs bg-sky-700 px-2 py-1 rounded" data-i18n="room_2_s">約 8 坪</span>
                         </div>
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
-                                <li>床型：5x6 雙人床一張</li>
-                                <li>加床：<span class="text-slate-400">本房型不提供加床</span></li>
+                                <li data-i18n="room_2_b">床型：5x6 雙人床一張</li>
+                                <li><span data-i18n="room_add_bed_label">加床：</span><span class="text-slate-400" data-i18n="room_no_add">本房型不提供加床</span></li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$2,900</span></div>
-                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$3,700</span></div>
-                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$4,500</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekday">平日</span><span class="font-bold text-sky-700">$2,900</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekend">假日</span><span class="font-bold text-sky-700">$3,700</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span data-i18n="def_holiday">節日 (春節)</span><span>$4,500</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col">
                         <div class="p-6 bg-sky-900 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">四人套房</h4>
-                            <span class="text-xs bg-sky-700 px-2 py-1 rounded">約 12 坪</span>
+                            <h4 class="text-xl font-bold" data-i18n="room_4_t">四人套房</h4>
+                            <span class="text-xs bg-sky-700 px-2 py-1 rounded" data-i18n="room_4_s">約 12 坪</span>
                         </div>
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
-                                <li>床型：5x6 雙人床兩張</li>
-                                <li class="text-sky-700 font-bold">加床：最多可加 1 床</li>
+                                <li data-i18n="room_4_b">床型：5x6 雙人床兩張</li>
+                                <li class="text-sky-700 font-bold" data-i18n="room_add_1">加床：最多可加 1 床</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$3,900</span></div>
-                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$5,100</span></div>
-                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$5,700</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekday">平日</span><span class="font-bold text-sky-700">$3,900</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekend">假日</span><span class="font-bold text-sky-700">$5,100</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span data-i18n="def_holiday">節日 (春節)</span><span>$5,700</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col">
                         <div class="p-6 bg-sky-900 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">六人套房</h4>
-                            <span class="text-xs bg-sky-700 px-2 py-1 rounded">約 12 坪</span>
+                            <h4 class="text-xl font-bold" data-i18n="room_6_t">六人套房</h4>
+                            <span class="text-xs bg-sky-700 px-2 py-1 rounded" data-i18n="room_4_s">約 12 坪</span>
                         </div>
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
-                                <li>床型：5x6 雙人床三張</li>
-                                <li class="text-sky-700 font-bold">加床：最多可加 1 床</li>
+                                <li data-i18n="room_6_b">床型：5x6 雙人床三張</li>
+                                <li class="text-sky-700 font-bold" data-i18n="room_add_1">加床：最多可加 1 床</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-700">$4,800</span></div>
-                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-700">$6,300</span></div>
-                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$6,900</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekday">平日</span><span class="font-bold text-sky-700">$4,800</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekend">假日</span><span class="font-bold text-sky-700">$6,300</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span data-i18n="def_holiday">節日 (春節)</span><span>$6,900</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-slate-100 rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col">
                         <div class="p-6 bg-slate-700 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">八人房</h4>
-                            <span class="text-xs bg-slate-500 px-2 py-1 rounded">兩間衛浴</span>
+                            <h4 class="text-xl font-bold" data-i18n="room_8_t">八人房</h4>
+                            <span class="text-xs bg-slate-500 px-2 py-1 rounded" data-i18n="room_8_s">兩間衛浴</span>
                         </div>
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
-                                <li>特色：設有兩間獨立衛浴</li>
-                                <li class="text-sky-800 font-bold">加床：最多加 1 床 (至 9 位)</li>
+                                <li data-i18n="room_8_f">特色：設有兩間獨立衛浴</li>
+                                <li class="text-sky-800 font-bold" data-i18n="room_add_9">加床：最多加 1 床 (至 9 位)</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-sky-800">$5,800</span></div>
-                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-sky-800">$7,200</span></div>
-                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$7,800</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekday">平日</span><span class="font-bold text-sky-800">$5,800</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekend">假日</span><span class="font-bold text-sky-800">$7,200</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span data-i18n="def_holiday">節日 (春節)</span><span>$7,800</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-amber-50 rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
                         <div class="p-6 bg-amber-800 text-white flex justify-between items-center">
-                            <h4 class="text-xl font-bold">家庭八人房</h4>
-                            <span class="text-xs bg-amber-700 px-2 py-1 rounded">寬敞景觀</span>
+                            <h4 class="text-xl font-bold" data-i18n="room_fam_t">家庭八人房</h4>
+                            <span class="text-xs bg-amber-700 px-2 py-1 rounded" data-i18n="room_fam_s">寬敞景觀</span>
                         </div>
                         <div class="p-6 flex-grow">
                             <ul class="text-sm text-slate-600 space-y-2 mb-6">
-                                <li>特色：空間最寬敞，採光優異</li>
-                                <li class="text-amber-700 font-bold">加床：最多加 1 床 (至 9 位)</li>
+                                <li data-i18n="room_fam_f">特色：空間最寬敞，採光優異</li>
+                                <li class="text-amber-700 font-bold" data-i18n="room_add_9">加床：最多加 1 床 (至 9 位)</li>
                             </ul>
                             <div class="space-y-2 border-t pt-4">
-                                <div class="flex justify-between"><span>平日</span><span class="font-bold text-amber-800">$6,300</span></div>
-                                <div class="flex justify-between"><span>假日</span><span class="font-bold text-amber-800">$7,700</span></div>
-                                <div class="flex justify-between text-slate-400 italic"><span>節日 (春節)</span><span>$8,300</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekday">平日</span><span class="font-bold text-amber-800">$6,300</span></div>
+                                <div class="flex justify-between"><span data-i18n="def_weekend">假日</span><span class="font-bold text-amber-800">$7,700</span></div>
+                                <div class="flex justify-between text-slate-400 italic"><span data-i18n="def_holiday">節日 (春節)</span><span>$8,300</span></div>
                             </div>
                         </div>
                     </div>
@@ -222,24 +227,24 @@
 
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">💰</span> 加床費用說明</h4>
-                        <ul class="space-y-3 text-slate-600">
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">💰</span> <span data-i18n="extra_bed_t">加床費用說明</span></h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
                             <li class="flex justify-between pb-2 border-b border-slate-50">
-                                <span>平日、假日</span><span class="font-bold text-sky-700">$500 / 床</span>
+                                <span data-i18n="extra_bed_w">平日、假日</span><span class="font-bold text-sky-700" data-i18n="extra_bed_w_p">$500 / 床</span>
                             </li>
                             <li class="flex justify-between pb-2 border-b border-slate-50">
-                                <span>節日 (春節年假)</span><span class="font-bold text-rose-600">$600 / 床</span>
+                                <span data-i18n="def_holiday">節日 (春節年假)</span><span class="font-bold text-rose-600" data-i18n="extra_bed_h_p">$600 / 床</span>
                             </li>
                         </ul>
-                        <p class="text-xs text-slate-400 mt-4 leading-relaxed">※ 請注意各房型加床上限，為維護住宿品質，恕無法提供超過上限之加床服務。</p>
+                        <p class="text-xs text-slate-400 mt-4 leading-relaxed" data-i18n="extra_bed_notice">※ 請注意各房型加床上限，為維護住宿品質，恕無法提供超過上限之加床服務。</p>
                     </div>
 
                     <div class="bg-sky-50 p-8 rounded-2xl border border-sky-100">
-                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">🗓️</span> 平假日定義說明</h4>
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">🗓️</span> <span data-i18n="def_title">平假日定義說明</span></h4>
                         <ul class="text-sm space-y-3 text-slate-600">
-                            <li><span class="font-bold text-sky-800">平日：</span>星期日至星期五</li>
-                            <li><span class="font-bold text-sky-800">假日：</span>週六、連續假日及國定假日</li>
-                            <li><span class="font-bold text-rose-600">節日：</span>農曆春節年假期間</li>
+                            <li><span class="font-bold text-sky-800" data-i18n="def_weekday">平日</span><span data-i18n="def_weekday_d">：星期日至星期五</span></li>
+                            <li><span class="font-bold text-sky-800" data-i18n="def_weekend">假日</span><span data-i18n="def_weekend_d">：週六、連續假日及國定假日</span></li>
+                            <li><span class="font-bold text-rose-600" data-i18n="def_holiday_t">節日</span><span data-i18n="def_holiday_d">：農曆春節年假期間</span></li>
                         </ul>
                     </div>
                 </div>
@@ -249,51 +254,51 @@
                 <div class="bg-slate-50 p-6 md:p-12 rounded-2xl shadow-inner space-y-8 text-slate-700">
                     <div class="grid md:grid-cols-2 gap-8 border-b border-slate-200 pb-8">
                         <div class="space-y-3">
-                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🕒</span> 進退房時間</h4>
-                            <p class="text-sm">進房時間：下午 2:30 以後</p>
-                            <p class="text-sm">退房時間：上午 10:30 以前</p>
+                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🕒</span> <span data-i18n="check_t">進退房時間</span></h4>
+                            <p class="text-sm" data-i18n="check_in">進房時間：下午 2:30 以後</p>
+                            <p class="text-sm" data-i18n="check_out">退房時間：上午 10:30 以前</p>
                         </div>
                         <div class="space-y-3 text-sm">
-                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🍳</span> 膳食與稅務</h4>
-                            <p>訂房均附贈早餐</p>
-                            <p class="font-bold text-rose-600 underline">官網房價皆為未稅價</p>
+                            <h4 class="font-bold text-sky-900 flex items-center"><span class="mr-2">🍳</span> <span data-i18n="meal_t">膳食與稅務</span></h4>
+                            <p data-i18n="meal_d">訂房均附贈早餐</p>
+                            <p class="font-bold text-rose-600 underline" data-i18n="tax_notice">官網房價皆為未稅價</p>
                         </div>
                     </div>
 
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500">
-                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">📜</span> 匯款確認手續</h4>
+                        <h4 class="font-bold text-sky-900 mb-4 flex items-center"><span class="mr-2">📜</span> <span data-i18n="remit_t">匯款確認手續</span></h4>
                         <ol class="list-decimal pl-5 space-y-3 text-sm md:text-base">
-                            <li>訂房訂金請匯款房價之 <span class="font-bold text-amber-600">1/2</span>。</li>
-                            <li>請於訂房後 <span class="font-bold text-amber-600">【三天內】</span> 完成匯款，並以電話或 Email 確認手續。</li>
-                            <li>確認時請註明：<span class="font-bold">預訂房型、日期、姓名、聯絡電話</span>。</li>
-                            <li class="text-slate-500">逾期未確認或每日 17:00 前未完成確認者，本園保有取消權利。</li>
+                            <li data-i18n="remit_1">訂房訂金請匯款房價之 <span class="font-bold text-amber-600">1/2</span>。</li>
+                            <li data-i18n="remit_2">請於訂房後 <span class="font-bold text-amber-600">【三天內】</span> 完成匯款，並以電話或 Email 確認手續。</li>
+                            <li data-i18n="remit_3">確認時請註明：<span class="font-bold">預訂房型、日期、姓名、聯絡電話</span>。</li>
+                            <li class="text-slate-500" data-i18n="remit_4">逾期未確認或每日 17:00 前未完成確認者，本園保有取消權利。</li>
                         </ol>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-sky-900 mb-6 flex items-center"><span class="mr-2">📋</span> 取消入住退還訂金比例</h4>
-                        <p class="text-xs text-slate-500 mb-4">依據南投縣政府「府觀管字第1020010092號函」辦理：</p>
+                        <h4 class="font-bold text-sky-900 mb-6 flex items-center"><span class="mr-2">📋</span> <span data-i18n="refund_t">取消入住退還訂金比例</span></h4>
+                        <p class="text-xs text-slate-500 mb-4" data-i18n="refund_law">依據南投縣政府「府觀管字第1020010092號函」辦理：</p>
                         <div class="space-y-2">
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 14 天通知</span><span class="font-bold text-green-600">退還 100%</span>
+                                <span data-i18n="ref_14">入住前 14 天通知</span><span class="font-bold text-green-600" data-i18n="ref_100">退還 100%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 10-13 天通知</span><span class="font-bold text-slate-700">退還 70%</span>
+                                <span data-i18n="ref_10">入住前 10-13 天通知</span><span class="font-bold text-slate-700" data-i18n="ref_70">退還 70%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 7-9 天通知</span><span class="font-bold text-slate-700">退還 50%</span>
+                                <span data-i18n="ref_7">入住前 7-9 天通知</span><span class="font-bold text-slate-700" data-i18n="ref_50">退還 50%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 4-6 天通知</span><span class="font-bold text-slate-700">退還 40%</span>
+                                <span data-i18n="ref_4">入住前 4-6 天通知</span><span class="font-bold text-slate-700" data-i18n="ref_40">退還 40%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 2-3 天通知</span><span class="font-bold text-slate-700">退還 30%</span>
+                                <span data-i18n="ref_2">入住前 2-3 天通知</span><span class="font-bold text-slate-700" data-i18n="ref_30">退還 30%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-white rounded border border-slate-100 text-sm">
-                                <span>入住前 1 天通知</span><span class="font-bold text-slate-700">退還 20%</span>
+                                <span data-i18n="ref_1">入住前 1 天通知</span><span class="font-bold text-slate-700" data-i18n="ref_20">退還 20%</span>
                             </div>
                             <div class="flex justify-between p-3 bg-amber-50 rounded border border-amber-200 text-amber-800 text-sm font-bold">
-                                <span>入住當天通知或未入住者</span><span>不退還訂金</span>
+                                <span data-i18n="ref_0">入住當天通知或未入住者</span><span data-i18n="ref_0_p">不退還訂金</span>
                             </div>
                         </div>
                     </div>
@@ -302,91 +307,86 @@
         </div>
     </section>
 	
-   <section id="food" class="py-20 bg-slate-50">
+    <section id="food" class="py-20 bg-slate-50">
         <div class="container mx-auto px-6">
-            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">特色餐飲</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950" data-i18n="nav_food">特色餐飲</h3>
             
             <div class="max-w-5xl mx-auto space-y-10">
-                
                 <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-amber-400 flex flex-col md:flex-row md:items-center justify-between">
                     <div>
-                        <h4 class="text-2xl font-bold text-sky-900 mb-2 flex items-center">☕ 早餐服務</h4>
-                        <p class="text-slate-600">住宿房客均由山莊悉心準備，附贈美味的西式早餐。</p>
+                        <h4 class="text-2xl font-bold text-sky-900 mb-2 flex items-center">☕ <span data-i18n="food_br_t">早餐服務</span></h4>
+                        <p class="text-slate-600" data-i18n="food_br_d">住宿房客均由山莊悉心準備，附贈美味的西式早餐。</p>
                     </div>
                     <div class="mt-4 md:mt-0">
-                        <span class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold">房客免費附贈</span>
+                        <span class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold" data-i18n="food_free">房客免費附贈</span>
                     </div>
                 </div>
 
                 <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100">
                     <div class="text-center mb-10">
-                        <h4 class="text-2xl font-bold text-sky-900 mb-2">🍲 晚餐：特色火鍋</h4>
-                        <p class="text-amber-600 font-bold text-sm">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
+                        <h4 class="text-2xl font-bold text-sky-900 mb-2">🍲 <span data-i18n="food_din_t">晚餐：特色火鍋</span></h4>
+                        <p class="text-amber-600 font-bold text-sm" data-i18n="food_din_notice">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
                     </div>
 
                     <div class="grid lg:grid-cols-3 gap-8">
-                        
                         <div class="space-y-4">
                             <div class="bg-sky-50 p-4 rounded-xl">
-                                <h5 class="font-bold text-sky-900 text-lg border-b border-sky-200 pb-2 mb-3">東北酸菜白肉鍋</h5>
+                                <h5 class="font-bold text-sky-900 text-lg border-b border-sky-200 pb-2 mb-3" data-i18n="hot_sour">東北酸菜白肉鍋</h5>
                                 <ul class="text-sm space-y-2 text-slate-700">
-                                    <li class="flex justify-between"><span>兩人份</span><span class="font-bold">$700</span></li>
-                                    <li class="flex justify-between"><span>三人份</span><span class="font-bold">$1,000</span></li>
-                                    <li class="flex justify-between border-sky-100 border-t pt-2"><span>四人份</span><span class="font-bold">$1,200</span></li>
-                                    <li class="flex justify-between"><span>五人份</span><span class="font-bold">$1,500</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_2">兩人份</span><span class="font-bold">$700</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_3">三人份</span><span class="font-bold">$1,000</span></li>
+                                    <li class="flex justify-between border-sky-100 border-t pt-2"><span data-i18n="p_4">四人份</span><span class="font-bold">$1,200</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_5">五人份</span><span class="font-bold">$1,500</span></li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="space-y-4">
                             <div class="bg-rose-50 p-4 rounded-xl border border-rose-100">
-                                <h5 class="font-bold text-rose-900 text-lg border-b border-rose-200 pb-2 mb-3">紅燒羊肉鍋</h5>
+                                <h5 class="font-bold text-rose-900 text-lg border-b border-rose-200 pb-2 mb-3" data-i18n="hot_lamb">紅燒羊肉鍋</h5>
                                 <ul class="text-sm space-y-2 text-slate-700">
-                                    <li class="flex justify-between"><span>兩人份</span><span class="font-bold">$800</span></li>
-                                    <li class="flex justify-between"><span>三人份</span><span class="font-bold">$1,100</span></li>
-                                    <li class="flex justify-between border-rose-100 border-t pt-2"><span>四人份</span><span class="font-bold">$1,400</span></li>
-                                    <li class="flex justify-between"><span>五人份</span><span class="font-bold">$1,700</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_2">兩人份</span><span class="font-bold">$800</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_3">三人份</span><span class="font-bold">$1,100</span></li>
+                                    <li class="flex justify-between border-rose-100 border-t pt-2"><span data-i18n="p_4">四人份</span><span class="font-bold">$1,400</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_5">五人份</span><span class="font-bold">$1,700</span></li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="space-y-4">
                             <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
                                 <div class="flex justify-between items-center border-b border-emerald-200 pb-2 mb-3">
-                                    <h5 class="font-bold text-emerald-900 text-lg">養生藥膳火鍋</h5>
-                                    <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded">可做素食</span>
+                                    <h5 class="font-bold text-emerald-900 text-lg" data-i18n="hot_herb">養生藥膳火鍋</h5>
+                                    <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded" data-i18n="hot_veg">可做素食</span>
                                 </div>
                                 <ul class="text-sm space-y-2 text-slate-700">
-                                    <li class="flex justify-between"><span>兩人份</span><span class="font-bold">$700</span></li>
-                                    <li class="flex justify-between"><span>三人份</span><span class="font-bold">$1,000</span></li>
-                                    <li class="flex justify-between border-emerald-100 border-t pt-2"><span>四人份</span><span class="font-bold">$1,200</span></li>
-                                    <li class="flex justify-between"><span>五人份</span><span class="font-bold">$1,500</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_2">兩人份</span><span class="font-bold">$700</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_3">三人份</span><span class="font-bold">$1,000</span></li>
+                                    <li class="flex justify-between border-emerald-100 border-t pt-2"><span data-i18n="p_4">四人份</span><span class="font-bold">$1,200</span></li>
+                                    <li class="flex justify-between"><span data-i18n="p_5">五人份</span><span class="font-bold">$1,500</span></li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="mt-12 pt-8 border-t border-slate-100">
                         <div class="flex flex-col md:flex-row gap-8">
                             <div class="md:w-1/3">
-                                <h5 class="font-bold text-slate-800 mb-3 underline decoration-sky-500 underline-offset-4">※ 追加單點</h5>
-                                <p class="text-sky-700 font-bold">添加各式火鍋料：$100 / 份</p>
+                                <h5 class="font-bold text-slate-800 mb-3 underline decoration-sky-500 underline-offset-4" data-i18n="hot_extra_t">※ 追加單點</h5>
+                                <p class="text-sky-700 font-bold" data-i18n="hot_extra_d">添加各式火鍋料：$100 / 份</p>
                             </div>
                             <div class="md:w-2/3">
-                                <h5 class="font-bold text-slate-800 mb-3 underline decoration-sky-500 underline-offset-4">隨餐菜色內容</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">各式火鍋料</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">豆皮</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">玉米</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">金針菇</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">豆腐</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">杏鮑菇</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">香菇</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">高麗菜</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">冬粉</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">各式時蔬</span>
-                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-sm">白飯</span>
+                                <h5 class="font-bold text-slate-800 mb-3 underline decoration-sky-500 underline-offset-4" data-i18n="hot_side_t">隨餐菜色內容</h5>
+                                <div class="flex flex-wrap gap-2 text-xs md:text-sm">
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_1">各式火鍋料</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_2">豆皮</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_3">玉米</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_4">金針菇</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_5">豆腐</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_6">杏鮑菇</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_7">香菇</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_8">高麗菜</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_9">冬粉</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_10">各式時蔬</span>
+                                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md" data-i18n="m_11">白飯</span>
                                 </div>
                             </div>
                         </div>
@@ -396,35 +396,32 @@
         </div>
     </section>
 
-<section id="traffic" class="py-20 bg-white">
+    <section id="traffic" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950">交通指引</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-sky-950" data-i18n="nav_traffic">交通指引</h3>
             
             <div class="max-w-5xl mx-auto space-y-12">
-                
                 <div class="space-y-6">
                     <h4 class="text-xl font-bold text-sky-900 flex items-center">
-                        <span class="mr-2">🚗</span> 自行開車建議
+                        <span class="mr-2">🚗</span> <span data-i18n="tra_car_t">自行開車建議</span>
                     </h4>
                     
                     <div class="grid gap-6">
                         <div class="p-8 bg-sky-900 text-white rounded-2xl shadow-xl border-l-8 border-sky-500 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-4 bg-sky-500 text-white font-bold text-xs uppercase tracking-widest">
-                                最佳推薦
-                            </div>
+                            <div class="absolute top-0 right-0 p-4 bg-sky-500 text-white font-bold text-xs uppercase tracking-widest" data-i18n="tra_best">最佳推薦</div>
                             <p class="text-xl font-bold text-sky-200 mb-4 flex items-center">
-                                🌟 首選路線：直達埔里快速路線 (經國道 6 號)
+                                🌟 <span data-i18n="tra_r1_t">首選路線：直達埔里快速路線 (經國道 6 號)</span>
                             </p>
-                            <p class="leading-relaxed">
+                            <p class="leading-relaxed text-sm md:text-base" data-i18n="tra_r1_d">
                                 <span class="font-bold">國道三號（中二高）</span> → 霧峰系統接 <span class="font-bold text-amber-300 text-lg">國道 6 號</span> → 終點交流道左轉 → 走省道台 14 線（往霧社）→ 經霧社、清境農場、青青草原 → <span class="bg-sky-800 px-2 rounded">台 14 甲線 12.4K 處</span> 右側上坡轉彎爬坡 → <span class="font-bold">觀星園景觀山莊</span>。
                             </p>
                         </div>
 
                         <div class="p-6 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
                             <p class="font-bold text-slate-700 mb-2 flex items-center">
-                                <span class="mr-2">⚠️</span> 若國道 6 號壅塞時之替代路線
+                                <span class="mr-2">⚠️</span> <span data-i18n="tra_r2_t">若國道 6 號壅塞時之替代路線</span>
                             </p>
-                            <p class="text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="tra_r2_d">
                                 自國道三號（二高）<span class="font-bold underline">草屯交流道下</span> → 直接行駛省道 <span class="font-bold text-sky-700">台 14 線（中潭公路）</span> → 經草屯、國姓、埔里 → 接續往霧社、清境農場方向前行。
                             </p>
                         </div>
@@ -433,23 +430,23 @@
 
                 <div class="bg-amber-50 p-8 rounded-2xl border border-amber-100 shadow-sm">
                     <h4 class="text-xl font-bold text-amber-900 mb-6 flex items-center">
-                        <span class="mr-2">🚌</span> 搭乘大眾運輸
+                        <span class="mr-2">🚌</span> <span data-i18n="tra_bus_t">搭乘大眾運輸</span>
                     </h4>
-                    <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex flex-col md:flex-row gap-8 text-sm md:text-base">
                         <div class="md:w-2/3 space-y-4">
-                            <p class="text-slate-700 leading-relaxed">
+                            <p class="text-slate-700 leading-relaxed" data-i18n="tra_bus_d">
                                 從 <span class="font-bold">台中高鐵站 / 台中火車站</span> 搭乘客運往埔里總站，再轉乘南投客運往清境農場方向。
                             </p>
                             <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-inner">
-                                <p class="text-amber-800 font-bold mb-1">💡 接駁服務提醒：</p>
-                                <p class="text-slate-600 text-sm leading-relaxed">
+                                <p class="text-amber-800 font-bold mb-1">💡 <span data-i18n="tra_pickup_t">接駁服務提醒：</span></p>
+                                <p class="text-slate-600 text-sm leading-relaxed" data-i18n="tra_pickup_d">
                                     部分班次（台灣好行）可直達清境，請務必於 <span class="font-bold text-sky-700 text-lg">「松崗站」</span> 下車，並來電通知山莊，我們將前往接駁。
                                 </p>
                             </div>
                         </div>
                         <div class="md:w-1/3 flex flex-col justify-center items-center bg-white p-6 rounded-2xl border border-amber-200 text-center">
-                            <p class="text-xs text-slate-400 font-bold mb-2">南投客運時刻表</p>
-                            <a href="http://www.ntbus.com.tw/cjfm.html" target="_blank" class="w-full bg-sky-900 text-white py-3 rounded-full font-bold hover:bg-sky-800 transition mb-3 shadow-md">
+                            <p class="text-xs text-slate-400 font-bold mb-2" data-i18n="tra_bus_btn_t">南投客運時刻表</p>
+                            <a href="http://www.ntbus.com.tw/cjfm.html" target="_blank" class="w-full bg-sky-900 text-white py-3 rounded-full font-bold hover:bg-sky-800 transition mb-3 shadow-md" data-i18n="tra_bus_btn">
                                 點此開啟網址
                             </a>
                             <p class="text-xs text-slate-400">客運總站：049-2984033</p>
@@ -474,40 +471,36 @@
 
     <footer id="contact" class="bg-sky-950 text-white py-16">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-2xl font-bold mb-10 italic text-sky-200">清境最高視野 ‧ 觀星園</h3>
+            <h3 class="text-2xl font-bold mb-10 italic text-sky-200" data-i18n="footer_slogan">清境最高視野 ‧ 觀星園</h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-sm md:text-base mb-12">
-                
                 <div class="flex flex-col items-center space-y-2">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Address</p>
-                    <a href="https://maps.app.goo.gl/ChIJv1JzcyDqaDQRz7rUdFUbY2Q" target="_blank" class="contact-link transition text-center leading-relaxed">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs" data-i18n="f_addr_t">Address</p>
+                    <a href="https://maps.app.goo.gl/ChIJv1JzcyDqaDQRz7rUdFUbY2Q" target="_blank" class="contact-link transition text-center leading-relaxed" data-i18n="footer_addr">
                         南投縣仁愛鄉大同村博望巷96號
                     </a>
                 </div>
-
                 <div class="flex flex-col items-center space-y-2">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Phone & LINE</p>
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs" data-i18n="f_phone_t">Phone & LINE</p>
                     <div class="flex flex-col items-center space-y-1">
                         <a href="tel:0492802242" class="contact-link transition">049-2802242</a>
-                        <a href="tel:0919713201" class="contact-link transition">0919-713201 (手機)</a>
+                        <a href="tel:0919713201" class="contact-link transition">0919-713201 (<span data-i18n="f_mobile">手機</span>)</a>
                         <div class="pt-1 text-xs text-sky-200">
                             <span class="font-bold">LINE ID：</span>0919713201
                         </div>
                     </div>
                 </div>
-
                 <div class="flex flex-col items-center space-y-2">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Email</p>
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs" data-i18n="f_email_t">Email</p>
                     <a href="mailto:hclee0701@yahoo.com.tw" class="contact-link transition">
                         hclee0701@yahoo.com.tw
                     </a>
                 </div>
-
                 <div class="flex flex-col items-center space-y-4">
-                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs">Social Media</p>
+                    <p class="font-bold text-sky-400 uppercase tracking-widest text-xs" data-i18n="f_social_t">Social Media</p>
                     <div class="flex flex-col space-y-3">
                         <a href="https://www.facebook.com/starryhouse.nantou/" target="_blank" class="contact-link transition flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"></path></svg>
-                            <span>粉絲專頁</span>
+                            <span data-i18n="f_fb">粉絲專頁</span>
                         </a>
                         <a href="https://www.instagram.com/hclee0701/" target="_blank" class="contact-link transition flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -515,14 +508,17 @@
                         </a>
                     </div>
                 </div>
-
             </div>
-            <p class="text-xs text-sky-800 pt-8 border-t border-sky-900">© 2026 清境觀星園景觀山莊 | 新官網建置中</p>
+            <p class="text-xs text-sky-800 pt-8 border-t border-sky-900" data-i18n="footer_copy">© 2026 清境觀星園景觀山莊 | 新官網建置中</p>
         </div>
     </footer>
 
     <script>
-        // 頁籤切換邏輯
+        // 初始化全域語系變數
+        let i18n = {};
+        let currentLang = 'zh';
+
+        // 1. 頁籤切換邏輯
         function openTab(evt, tabName) {
             var i, tabContent, tabBtn;
             tabContent = document.getElementsByClassName("tab-content");
@@ -536,8 +532,55 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
+
+        // 2. 切換語言邏輯
+        function toggleLanguage() {
+            currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+            applyTranslations();
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 3. 渲染翻譯內容
+        function applyTranslations() {
+            if (!i18n[currentLang]) return;
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.innerHTML = i18n[currentLang][key];
+                }
+            });
+
+            // 特別處理按鈕文字與標題
+            const btn = document.getElementById('langBtn');
+            if (btn) btn.innerText = i18n[currentLang]['lang_btn'];
+            
+            const docTitle = i18n[currentLang]['doc_title'];
+            if (docTitle) document.title = docTitle;
+        }
+
+        // 4. 網頁載入時：讀取外部 JSON
+        window.onload = async () => {
+            try {
+                // 從與 index.html 同目錄處讀取 translations.json
+                const response = await fetch('translations.json');
+                if (!response.ok) throw new Error('檔案讀取失敗');
+                
+                i18n = await response.json();
+                
+                // 讀取使用者上次選擇的語言
+                const savedLang = localStorage.getItem('preferredLang');
+                if (savedLang && i18n[savedLang]) {
+                    currentLang = savedLang;
+                }
+                
+                // 執行第一次渲染
+                applyTranslations();
+            } catch (error) {
+                console.error('語系檔讀取失敗:', error);
+            }
+        };
     </script>
 </body>
 </html>
-
-

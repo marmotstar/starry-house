@@ -44,12 +44,12 @@
         "lang_btn": "English"
     },
     "en": {
-        "doc_title": "Starry Garden Villa | Meeting in the clouds at 2106m",
-        "nav_brand": "Starry Garden Villa",
+        "doc_title": "Starry House | Meeting in the clouds at 2106m",
+        "nav_brand": "Starry House",
         "nav_home": "Home", "nav_about": "About", "nav_rooms": "Rooms", "nav_food": "Dining", "nav_traffic": "Traffic", "nav_contact": "Contact",
-        "hero_alt": "Altitude 2106 Meters", "hero_title": "Embrace Hehuan Peaks<br>Stroll Under Clouds & Stars",
-        "about_title": "Meeting in the Clouds",
-        "about_p1": "Starry Garden is located at <span class='font-bold text-sky-700 underline decoration-sky-300 decoration-2 underline-offset-4'>2106 meters</span> altitude, the highest landscape villa in Cingjing. Away from traffic noise, with an average annual temperature of 16℃, feel the magic of nature in pure air.",
+        "hero_alt": "Altitude 2106 Meters", "hero_title": "Embrace Hehuan Peaks<br>Strolling Through The Stars, High Above The Clouds",
+        "about_title": "Beyond the Clouds, the Ultimate Stargazing.",
+        "about_p1": "Starry House is located at <span class='font-bold text-sky-700 underline decoration-sky-300 decoration-2 underline-offset-4'>2106 meters</span> altitude, the highest landscape villa in Cingjing. Away from traffic noise, with an average annual temperature of 16℃, feel the magic of nature in pure air.",
         "about_p2": "Every room features a <span class='font-bold text-sky-700'>180-degree balcony</span> with views of Hehuan, Qilai, and Jade Mountain peaks. Whether it's the morning sea of clouds or nighttime stars, the scenery is breathtaking.",
         "about_p3": "Near NTU Meifeng Farm, only 19km from 'Wuling' (Taiwan's highest highway point). The <span class='font-bold text-sky-900'>Liying Peak Forest Trail</span> nearby offers a perfect 40-60 min hike for nature and bird watching.",
         "btn_line": "LINE Inquiry",
@@ -79,12 +79,12 @@
         "p_2": "2 Persons", "p_3": "3 Persons", "p_4": "4 Persons", "p_5": "5 Persons",
         "hot_extra_t": "※ Add-ons", "hot_extra_d": "Extra ingredients: $100 / portion", "hot_side_t": "What's Included",
         "m_1": "Ingredients", "m_2": "Bean Curd", "m_3": "Corn", "m_4": "Enoki", "m_5": "Tofu", "m_6": "King Oyster", "m_7": "Shiitake", "m_8": "Cabbage", "m_9": "Glass noodles", "m_10": "Vegetables", "m_11": "Rice",
-        "tra_car_t": "Driving Directions", "tra_best": "Best Route", "tra_r1_t": "Direct Route via Highway 6", "tra_r1_d": "National Highway 3 → Wufeng System to <span class='font-bold text-amber-300 text-lg'>Highway 6</span> → End of Highway turn left → Route 14 (toward Wushe) → Cingjing Farm → <span class='bg-sky-800 px-2 rounded'>Route 14A (12.4K)</span> turn right and go uphill → <span class='font-bold'>Starry Garden Villa</span>.",
+        "tra_car_t": "Driving Directions", "tra_best": "Best Route", "tra_r1_t": "Direct Route via Highway 6", "tra_r1_d": "National Highway 3 → Wufeng System to <span class='font-bold text-amber-300 text-lg'>Highway 6</span> → End of Highway turn left → Route 14 (toward Wushe) → Cingjing Farm → <span class='bg-sky-800 px-2 rounded'>Route 14A (12.4K)</span> turn right and go uphill → <span class='font-bold'>Starry House</span>.",
         "tra_r2_t": "Alternative Route (Heavy Traffic)", "tra_r2_d": "Exit Highway 3 at <span class='font-bold underline'>Caotun</span> → Take <span class='font-bold text-sky-700'>Route 14 (Zhongtan Hwy)</span> → Pass Caotun, Guoxing, Puli → Continue toward Wushe/Cingjing.",
         "tra_bus_t": "Public Transport", "tra_bus_d": "Take the bus from <span class='font-bold'>Taichung HSR / Train Station</span> to Puli, then transfer toward Cingjing Farm.",
         "tra_pickup_t": "Pickup Service:", "tra_pickup_d": "Some buses (Taiwan Trip) go direct. Please get off at <span class='font-bold text-sky-700 text-lg'>'Songgang Station'</span> and call us for pickup.",
         "tra_bus_btn_t": "Bus Timetable", "tra_bus_btn": "Open Website",
-        "footer_slogan": "Highest View in Cingjing ‧ Starry Garden", "footer_addr": "No. 96, Bowang Ln., Ren’ai Township, Nantou", "f_mobile": "Mobile", "f_fb": "Facebook", "footer_copy": "© 2026 Starry Garden Villa | New site under construction",
+        "footer_slogan": "Highest View in Cingjing ‧ Starry House", "footer_addr": "No. 96, Bowang Ln., Ren’ai Township, Nantou", "f_mobile": "Mobile", "f_fb": "Facebook", "footer_copy": "© 2026 Starry House | New site under construction",
         "lang_btn": "中文"
     }
 }
