@@ -121,4 +121,82 @@
                     <p class="text-slate-600 leading-loose">住宿旅客皆可享用美味的西式早餐。</p>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-600">
-                    <h4 class="text-2xl font-bold mb
+                    <h4 class="text-2xl font-bold mb-6 flex items-center">🍲 特色晚餐</h4>
+                    <p class="text-sm text-amber-600 font-bold mb-4">※ 僅供房客預訂，最遲於入住前一天預訂</p>
+                    <ul class="space-y-3 text-slate-700 text-sm md:text-base">
+                        <li class="flex justify-between border-b pb-2"><span>東北酸白菜火鍋 (2人份)</span> <span class="font-bold">$700</span></li>
+                        <li class="flex justify-between border-b pb-2"><span>紅燒羊肉鍋 (2人份)</span> <span class="font-bold">$800</span></li>
+                        <li class="flex justify-between border-b pb-2"><span>養生藥膳火鍋 (2人份)</span> <span class="font-bold">$700</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="traffic" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-12 text-sky-950">交通指引</h3>
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <div>
+                        <h4 class="font-bold text-xl mb-4 text-sky-800">自行開車</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            過「青青草原」上行 2 公里 (台14甲線 12.4k)，過博望新村 10 公尺，右側指標上坡即達。
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-4 text-sky-800">大眾運輸</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            搭乘客運往清境農場方向，於「松崗站」下車，請來電通知山莊前往接駁。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden shadow-2xl h-96 border border-slate-200">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.2568019324545!2d121.1656209761066!3d24.02200377750731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468da20737352bf%3A0x64631b5574d4ba4f!2z5riF5aKD6KeA5pif5ZyS5pmv6KeA5bGx6I6K!5e0!3m2!1szh-TW!2stw!4v1704877000000!5m2!1szh-TW!2stw" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-sky-950 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-8 italic text-sky-200">清境最高視野 ‧ 觀星園</h3>
+            <div class="grid md:grid-cols-3 gap-8 text-sm md:text-base mb-12">
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest">Address</p>
+                    <p>南投縣仁愛鄉大同村博望巷96號</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest">Phone</p>
+                    <p>049-2802242 / 0919-713201</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-400 uppercase tracking-widest">Online</p>
+                    <p>hclee0701@yahoo.com.tw</p>
+                </div>
+            </div>
+            <p class="text-xs text-sky-600">© 2026 清境觀星園景觀山莊 | 新官網建置中</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtn;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
