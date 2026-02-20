@@ -874,6 +874,22 @@
 			document.head.appendChild(s);
 		})();
 
+		// 產生遞增流水號：計算自 2026/1/1 起經過的分鐘數 + 秒數
+		function generateBookingID() {
+			// 設定一個起始基準點 (2026年1月1日)
+			const startDate = new Date('2026-01-01T00:00:00');
+			const now = new Date();
+			
+			// 計算與基準點相差的總分鐘數 (這會隨著時間穩步增加)
+			const diffInMinutes = Math.floor((now - startDate) / (1000 * 60));
+			
+			// 取得當下的秒數 (2碼)，防止同一分鐘內有兩個人送出而重複
+			const seconds = now.getSeconds().toString().padStart(2, '0');
+			
+			// 組合結果：例如 7485245 (代表第 74852 分鐘的第 45 秒)
+			return diffInMinutes.toString() + seconds;
+		}
+
 		// 表單送出處理  // 替換掉原本的整個 submit 監聽器
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
@@ -888,8 +904,18 @@
 			const originalText = btn.innerHTML;
 			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
 
-			// 產生訂房編號
-			const bookingID = generateBookingID();
+			//流水號產生函式「固定位數補零（Padding）」
+			function generateBookingID() {
+			// 基準點：2026年1月1日
+			const startDate = new Date('2026-01-01T00:00:00');
+			const now = new Date();
+			
+			// 計算總秒數
+			const diffInSeconds = Math.floor((now - startDate) / 1000);
+			
+			// 補零至 9 位數。這可以維持到西元 2057 年都是 9 位數！
+			return diffInSeconds.toString().padStart(9, '0');
+			}	
 
 			// 彙整房型資訊
 			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
@@ -920,12 +946,16 @@
 
 			emailjs.send("service_o0gr4cg", "template_fnkdbki", templateParams)
 				.then(() => {
-					alert((currentLang === 'zh') ? `預約需求已送出！編號：${bookingID}` : `Inquiry sent! ID: ${bookingID}`);
-					location.reload(); 
+					// 組合兩行訊息：第一行為序號，第二行為提醒
+					const msg = (currentLang === 'zh') ? 
+						`預約需求已送出！您的預約序號為：${bookingID}\n\n請留意，訂房手續尚未完成，我們將與您聯繫確認。` : 
+						`Inquiry sent! Your Serial No.: ${bookingID}\n\nPlease note: The booking is not yet complete. We will contact you to confirm.`;
+					
+					alert(msg);
+					location.reload();
 				})
 				.catch((err) => {
-					// 🛡️ 防護 3：如果失敗，重新啟用按鈕，讓使用者可以再次嘗試
-					alert('傳送失敗，請稍後再試。錯誤代碼：' + JSON.stringify(err));
+					alert('傳送失敗：' + JSON.stringify(err));
 					btn.disabled = false;
 					btn.innerHTML = originalText;
 				});
