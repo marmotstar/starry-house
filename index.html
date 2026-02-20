@@ -888,22 +888,20 @@
 		}
 
 		// 表單送出處理  // 替換掉原本的整個 submit 監聽器
+		// 表單送出處理
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
 			
 			const btn = document.getElementById('submit-btn');
-			// 🛡️ 防護 1：如果已經在傳送中，直接擋掉這次點擊
 			if (btn.disabled) return;
 			
-			// 1. 產生編號 (這行沒寫就會報 ReferenceError!)
-			const bookingID = generateBookingID(); 
-
-			// 🛡️ 防護 2：立即停用按鈕，防止二次點擊	
+			// 🛡️ 立即產生編號並鎖定按鈕
+			const currentBookingID = generateBookingID(); 
 			btn.disabled = true;
 			const originalText = btn.innerHTML;
 			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
 
-			// 彙整房型資訊... (省略中間部分邏輯)
+			// 彙整房型資訊
 			let roomSummary = ""; 
 			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
 			const roomQtys = document.querySelectorAll('input[name="room_quantity[]"]');
@@ -911,13 +909,14 @@
 				if(select.value) roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
 			});
 
+			// 準備發送參數
 			const templateParams = {
-				booking_id: bookingID,
+				booking_id: currentBookingID,
 				user_name: this.user_name.value,
 				user_phone: this.user_phone.value,
 				user_email: this.user_email.value,
-				user_line_id: this.user_line_id.value,
-				arrival_time: this.arrival_time.value,
+				user_line_id: this.user_line_id.value || "未提供",
+				arrival_time: this.arrival_time.value || "未提供",
 				checkin_date: this.checkin_date.value,
 				checkout_date: this.checkout_date.value,
 				num_adults: this.num_adults.value,
@@ -928,18 +927,19 @@
 				room_details: roomSummary
 			};
 
+			// 執行發送
 			emailjs.send("service_o0gr4cg", "template_fnkdbki", templateParams)
 				.then(() => {
-					// 組合兩行提醒訊息，使用 \n 換行
+					// 使用更明確的換行字元 \n\n 區分兩行訊息
 					const msg = (currentLang === 'zh') ? 
-						`預約需求已送出！您的預約序號為：${bookingID}\n\n請留意，訂房手續尚未完成，我們將與您聯繫確認。` : 
-						`Inquiry sent! Your Serial No.: ${bookingID}\n\nPlease note: The booking process is not yet complete. We will contact you to confirm.`;
+						`預約需求已送出！您的預約序號為：${currentBookingID}\n\n請留意，訂房手續尚未完成，我們將與您聯繫確認。` : 
+						`Inquiry sent! Your Serial No.: ${currentBookingID}\n\nPlease note: The booking process is not yet complete. We will contact you to confirm.`;
 					
 					alert(msg);
 					location.reload(); 
 				})
 				.catch((err) => {
-					alert('傳送失敗：' + JSON.stringify(err));
+					alert('傳送失敗，請檢查網路後重試。錯誤資訊：' + JSON.stringify(err));
 					btn.disabled = false;
 					btn.innerHTML = originalText;
 				});
