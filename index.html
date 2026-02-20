@@ -876,55 +876,39 @@
 
 		// 產生遞增流水號：計算自 2026/1/1 起經過的分鐘數 + 秒數
 		function generateBookingID() {
-			// 設定一個起始基準點 (2026年1月1日)
+			// 基準點：2026年1月1日
 			const startDate = new Date('2026-01-01T00:00:00');
 			const now = new Date();
 			
-			// 計算與基準點相差的總分鐘數 (這會隨著時間穩步增加)
-			const diffInMinutes = Math.floor((now - startDate) / (1000 * 60));
+			// 計算總秒數差
+			const diffInSeconds = Math.floor((now - startDate) / 1000);
 			
-			// 取得當下的秒數 (2碼)，防止同一分鐘內有兩個人送出而重複
-			const seconds = now.getSeconds().toString().padStart(2, '0');
-			
-			// 組合結果：例如 7485245 (代表第 74852 分鐘的第 45 秒)
-			return diffInMinutes.toString() + seconds;
+			// 補零至 9 位數，保證位數在十年內不變動
+			return diffInSeconds.toString().padStart(9, '0');
 		}
 
 		// 表單送出處理  // 替換掉原本的整個 submit 監聽器
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
-
-			const btn = document.getElementById('submit-btn');
 			
+			const btn = document.getElementById('submit-btn');
 			// 🛡️ 防護 1：如果已經在傳送中，直接擋掉這次點擊
 			if (btn.disabled) return;
+			
+			// 1. 產生編號 (這行沒寫就會報 ReferenceError!)
+			const bookingID = generateBookingID(); 
 
-			// 🛡️ 防護 2：立即停用按鈕，防止二次點擊
+			// 🛡️ 防護 2：立即停用按鈕，防止二次點擊	
 			btn.disabled = true;
 			const originalText = btn.innerHTML;
 			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
 
-			//流水號產生函式「固定位數補零（Padding）」
-			function generateBookingID() {
-			// 基準點：2026年1月1日
-			const startDate = new Date('2026-01-01T00:00:00');
-			const now = new Date();
-			
-			// 計算總秒數
-			const diffInSeconds = Math.floor((now - startDate) / 1000);
-			
-			// 補零至 9 位數。這可以維持到西元 2057 年都是 9 位數！
-			return diffInSeconds.toString().padStart(9, '0');
-			}	
-
-			// 彙整房型資訊
+			// 彙整房型資訊... (省略中間部分邏輯)
+			let roomSummary = ""; 
 			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
 			const roomQtys = document.querySelectorAll('input[name="room_quantity[]"]');
-			let roomSummary = "";
 			roomTypes.forEach((select, index) => {
-				if(select.value) {
-					roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
-				}
+				if(select.value) roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
 			});
 
 			const templateParams = {
@@ -933,9 +917,9 @@
 				user_phone: this.user_phone.value,
 				user_email: this.user_email.value,
 				user_line_id: this.user_line_id.value,
+				arrival_time: this.arrival_time.value,
 				checkin_date: this.checkin_date.value,
 				checkout_date: this.checkout_date.value,
-				arrival_time: this.arrival_time.value,
 				num_adults: this.num_adults.value,
 				num_children: this.num_children.value,
 				dinner_order: this.dinner_order.value,
@@ -946,13 +930,13 @@
 
 			emailjs.send("service_o0gr4cg", "template_fnkdbki", templateParams)
 				.then(() => {
-					// 組合兩行訊息：第一行為序號，第二行為提醒
+					// 組合兩行提醒訊息，使用 \n 換行
 					const msg = (currentLang === 'zh') ? 
 						`預約需求已送出！您的預約序號為：${bookingID}\n\n請留意，訂房手續尚未完成，我們將與您聯繫確認。` : 
-						`Inquiry sent! Your Serial No.: ${bookingID}\n\nPlease note: The booking is not yet complete. We will contact you to confirm.`;
+						`Inquiry sent! Your Serial No.: ${bookingID}\n\nPlease note: The booking process is not yet complete. We will contact you to confirm.`;
 					
 					alert(msg);
-					location.reload();
+					location.reload(); 
 				})
 				.catch((err) => {
 					alert('傳送失敗：' + JSON.stringify(err));
