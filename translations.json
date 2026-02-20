@@ -71,7 +71,8 @@
         "book_dinner_none": "不預訂晚餐 (No Dinner)",
         "book_notes": "備註與特殊需求",
         "book_submit_btn": "送出預約需求表單",
-        "book_privacy": "送出後即表示同意本山莊之訂房規定與隱私條款"
+        "book_privacy": "送出後即表示同意本山莊之訂房規定與隱私條款",
+		"nav_booking": "預約訂房"
     },
     "en": {
         "doc_title": "Starry House | Meeting in the clouds at 2106m",
@@ -145,6 +146,7 @@
         "book_dinner_none": "No dinner pre-order",
         "book_notes": "Notes & Special Requests",
         "book_submit_btn": "Submit Booking Inquiry",
-        "book_privacy": "By submitting, you agree to our booking rules and privacy policy."
+        "book_privacy": "By submitting, you agree to our booking rules and privacy policy.",
+		"nav_booking": "Booking"
     }
 }
