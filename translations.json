@@ -72,7 +72,10 @@
         "book_notes": "備註與特殊需求",
         "book_submit_btn": "送出預約需求表單",
         "book_privacy": "送出後即表示同意本山莊之訂房規定與隱私條款",
-		"nav_booking": "預約訂房"
+		"nav_booking": "預約訂房",
+		"book_line_id": "LINE ID",
+		"book_arrival_time": "預計到達時間",
+		"book_notes_placeholder": "例如：食物過敏、是否需要接駁等..."
     },
     "en": {
         "doc_title": "Starry House | Meeting in the clouds at 2106m",
@@ -147,6 +150,9 @@
         "book_notes": "Notes & Special Requests",
         "book_submit_btn": "Submit Booking Inquiry",
         "book_privacy": "By submitting, you agree to our booking rules and privacy policy.",
-		"nav_booking": "Booking"
+		"nav_booking": "Booking",
+		"book_line_id": "LINE ID",
+		"book_arrival_time": "Estimated Arrival Time",
+		"book_notes_placeholder": "e.g., food allergies, shuttle service needed, etc."
     }
 }

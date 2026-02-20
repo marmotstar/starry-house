@@ -21,6 +21,13 @@
         .tab-btn.active { border-bottom: 4px solid #0284c7; color: #0284c7; }
         .contact-link:hover { color: #facc15; text-decoration: underline; }
 		section { scroll-margin-top: 80px; }  /* 讓錨點跳轉時，自動預留導覽列的高度空間 */
+		/* 當按鈕被停用時的樣式 */
+		#submit-btn:disabled {
+			background-color: #64748b; /* 變成灰藍色 */
+			opacity: 0.7;
+			cursor: not-allowed; /* 滑鼠顯示禁止符號 */
+			transform: none; /* 取消原本的位移效果 */
+		}
     </style>
 	<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-96R40XQRZW"></script>
@@ -452,9 +459,13 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-sm font-bold text-slate-700" data-i18n="book_email">電子郵件 *</label>
-                        <input type="email" name="user_email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="example@gmail.com">
-                    </div>
+						<label class="block text-sm font-bold text-slate-700" data-i18n="book_email">電子郵件 *</label>
+						<input type="email" name="user_email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="example@gmail.com">
+					</div>
+					<div class="space-y-2">
+						<label class="block text-sm font-bold text-slate-700" data-i18n="book_line_id">LINE ID</label>
+						<input type="text" name="user_line_id" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="">
+					</div>
 
                     <hr class="border-slate-100">
 
@@ -467,6 +478,10 @@
                             <label class="block text-sm font-bold text-slate-700" data-i18n="book_checkout">退房日期 *</label>
                             <input type="date" name="checkout_date" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition">
                         </div>
+						<div class="space-y-2 mt-4">
+							<label class="block text-sm font-bold text-slate-700" data-i18n="book_arrival_time">預計到達時間</label>
+							<input type="text" name="arrival_time" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="例如：15:00">
+						</div>
                     </div>
 
                     <div class="space-y-4 mt-8">
@@ -560,9 +575,9 @@
 					</div>
 
                     <div class="space-y-2">
-                        <label class="block text-sm font-bold text-slate-700" data-i18n="book_notes">備註與特殊需求</label>
-                        <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="例如：預計到達時間、食物過敏等..."></textarea>
-                    </div>
+						<label class="block text-sm font-bold text-slate-700" data-i18n="book_notes">備註與特殊需求</label>
+						<textarea name="message" id="message-area" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" data-i18n-placeholder="book_notes_placeholder"></textarea>
+					</div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-sky-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-sky-800 transition shadow-lg transform hover:-translate-y-1">
                         <span data-i18n="book_submit_btn">送出預約需求表單</span>
@@ -776,23 +791,32 @@
 
         // 3. 渲染翻譯內容
         function applyTranslations() {
-            if (!i18n[currentLang]) return;
+			if (!i18n[currentLang]) return;
 
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[currentLang][key]) {
-                    el.innerHTML = i18n[currentLang][key];
-                }
-            });
+			// 修改選取器：讓它能同時抓取帶有 data-i18n 或 data-i18n-placeholder 的標籤
+			const elements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
+			
+			elements.forEach(el => {
+				// --- 這是原本處理文字翻譯的邏輯 ---
+				const key = el.getAttribute('data-i18n');
+				if (key && i18n[currentLang][key]) {
+					el.innerHTML = i18n[currentLang][key];
+				}
 
-            // 特別處理按鈕文字與標題
-            const btn = document.getElementById('langBtn');
-            if (btn) btn.innerText = i18n[currentLang]['lang_btn'];
-            
-            const docTitle = i18n[currentLang]['doc_title'];
-            if (docTitle) document.title = docTitle;
-        }
+				// --- 這是新加入處理 placeholder (預填文字) 翻譯的邏輯 ---
+				const placeholderKey = el.getAttribute('data-i18n-placeholder');
+				if (placeholderKey && i18n[currentLang][placeholderKey]) {
+					el.setAttribute('placeholder', i18n[currentLang][placeholderKey]);
+				}
+			});
+
+			// 特別處理按鈕文字與標題
+			const btn = document.getElementById('langBtn');
+			if (btn) btn.innerText = i18n[currentLang]['lang_btn'];
+			
+			const docTitle = i18n[currentLang]['doc_title'];
+			if (docTitle) document.title = docTitle;
+		}
 
         // 4. 網頁載入時：讀取外部 JSON
         window.onload = async () => {
@@ -853,8 +877,21 @@
 		// 表單送出處理  // 替換掉原本的整個 submit 監聽器
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
+
+			const btn = document.getElementById('submit-btn');
 			
-			// 彙整房型
+			// 🛡️ 防護 1：如果已經在傳送中，直接擋掉這次點擊
+			if (btn.disabled) return;
+
+			// 🛡️ 防護 2：立即停用按鈕，防止二次點擊
+			btn.disabled = true;
+			const originalText = btn.innerHTML;
+			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
+
+			// 產生訂房編號
+			const bookingID = generateBookingID();
+
+			// 彙整房型資訊
 			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
 			const roomQtys = document.querySelectorAll('input[name="room_quantity[]"]');
 			let roomSummary = "";
@@ -864,17 +901,15 @@
 				}
 			});
 
-			const btn = document.getElementById('submit-btn');
-			btn.disabled = true;
-			const originalText = btn.innerHTML;
-			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
-
 			const templateParams = {
+				booking_id: bookingID,
 				user_name: this.user_name.value,
 				user_phone: this.user_phone.value,
 				user_email: this.user_email.value,
+				user_line_id: this.user_line_id.value,
 				checkin_date: this.checkin_date.value,
 				checkout_date: this.checkout_date.value,
+				arrival_time: this.arrival_time.value,
 				num_adults: this.num_adults.value,
 				num_children: this.num_children.value,
 				dinner_order: this.dinner_order.value,
@@ -883,14 +918,14 @@
 				room_details: roomSummary
 			};
 
-			// ⚠️ 請確保這裡的三個參數都有加引號 ""
 			emailjs.send("service_o0gr4cg", "template_fnkdbki", templateParams)
 				.then(() => {
-					alert((currentLang === 'zh') ? '預約需求已送出！' : 'Inquiry sent!');
+					alert((currentLang === 'zh') ? `預約需求已送出！編號：${bookingID}` : `Inquiry sent! ID: ${bookingID}`);
 					location.reload(); 
 				})
 				.catch((err) => {
-					alert('傳送失敗，錯誤代碼：' + JSON.stringify(err));
+					// 🛡️ 防護 3：如果失敗，重新啟用按鈕，讓使用者可以再次嘗試
+					alert('傳送失敗，請稍後再試。錯誤代碼：' + JSON.stringify(err));
 					btn.disabled = false;
 					btn.innerHTML = originalText;
 				});
