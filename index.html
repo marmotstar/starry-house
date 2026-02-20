@@ -337,6 +337,149 @@
         </div>
     </section>
 	
+	<section id="booking" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                <div class="bg-sky-900 p-8 text-center text-white">
+                    <h3 class="text-3xl font-bold mb-2" data-i18n="book_title">預約訂房需求單</h3>
+                    <p class="text-sky-200 text-sm" data-i18n="book_subtitle">填寫後我們將儘速與您聯繫確認訂房狀況</p>
+                </div>
+                
+                <form id="booking-form" class="p-8 md:p-12 space-y-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700" data-i18n="book_name">聯絡姓名 *</label>
+                            <input type="text" name="user_name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="王小明">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700" data-i18n="book_phone">聯絡電話 *</label>
+                            <input type="tel" name="user_phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="0912-345678">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700" data-i18n="book_email">電子郵件 *</label>
+                        <input type="email" name="user_email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="example@gmail.com">
+                    </div>
+
+                    <hr class="border-slate-100">
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700" data-i18n="book_checkin">入住日期 *</label>
+                            <input type="date" name="checkin_date" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700" data-i18n="book_checkout">退房日期 *</label>
+                            <input type="date" name="checkout_date" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mt-8">
+						<div class="border-b border-slate-100 pb-2">
+							<label class="block text-lg font-bold text-sky-900 flex items-center">
+								<span class="mr-2">👥</span>
+								<span data-i18n="book_guests_title">入住人數總計</span>
+							</label>
+						</div>
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+							<div class="space-y-2">
+								<label class="block text-sm font-bold text-slate-700" data-i18n="book_adults">大人人數</label>
+								<div class="flex items-center space-x-2 bg-white p-1 rounded-xl border border-slate-200 shadow-sm">
+									<input type="number" name="num_adults" min="1" max="20" value="2" required 
+										   class="w-full px-4 py-2 rounded-lg border-0 outline-none focus:ring-0 text-center font-bold text-sky-900 text-lg">
+								</div>
+							</div>
+							<div class="space-y-2">
+								<label class="block text-sm font-bold text-slate-700" data-i18n="book_children">小孩人數 (12歲以下)</label>
+								<div class="flex items-center space-x-2 bg-white p-1 rounded-xl border border-slate-200 shadow-sm">
+									<input type="number" name="num_children" min="0" max="20" value="0" required 
+										   class="w-full px-4 py-2 rounded-lg border-0 outline-none focus:ring-0 text-center font-bold text-sky-900 text-lg">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="space-y-4 mt-8">
+						<div class="flex justify-between items-center border-b border-slate-100 pb-2">
+							<label class="block text-lg font-bold text-sky-900 flex items-center">
+								<span class="mr-2">🛏️</span>
+								<span data-i18n="book_rooms_title">預訂房型與數量 *</span>
+							</label>
+							<button type="button" onclick="addRoomRow()" class="text-sky-600 hover:text-sky-800 text-sm font-bold flex items-center bg-sky-50 px-3 py-1 rounded-full transition">
+								<span class="text-xl mr-1 leading-none">+</span> <span data-i18n="book_add_room">增加房型</span>
+							</button>
+						</div>
+						<div id="room-selection-container" class="space-y-3 pt-2">
+							<div class="room-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm">
+								<div class="w-full sm:flex-1">
+									<select name="room_type[]" onchange="updateQuantityLimit(this)" required class="room-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
+										<option value="" data-i18n="book_select">請選擇房型</option>
+										<option value="兩人套房">兩人套房 (Double Room)</option>
+										<option value="四人套房">四人套房 (Quad Room)</option>
+										<option value="六人套房">六人套房 (6-Person Room)</option>
+										<option value="八人房">八人房 (8-Person Room)</option>
+										<option value="家庭八人房">家庭八人房 (Family 8-Person Room)</option>
+									</select>
+								</div>
+								<div class="flex items-center space-x-2 w-full sm:w-auto justify-end bg-white p-1 rounded-xl border border-slate-200">
+									<input type="number" name="room_quantity[]" min="1" value="1" required 
+										   class="room-qty-input w-16 px-2 py-2 rounded-lg border-0 outline-none focus:ring-0 transition text-center font-bold text-sky-900 text-lg">
+									<span class="text-sm text-slate-500 font-bold pr-2" data-i18n="unit_room">間</span>
+									<div class="w-8 h-8"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="space-y-4 mt-8">
+						<div class="border-b border-slate-100 pb-2">
+							<label class="block text-lg font-bold text-sky-900 flex items-center">
+								<span class="mr-2">🍲</span>
+								<span data-i18n="food_din_t">晚餐：特色火鍋</span>
+							</label>
+						</div>
+						<div class="pt-2">
+							<select name="dinner_order" class="w-full px-4 py-4 border border-slate-200 rounded-xl text-md text-slate-700 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white font-medium">
+								<option value="不預訂晚餐" data-i18n="book_dinner_none">不預訂晚餐 (No Dinner)</option>
+								<option value="東北酸菜白肉鍋" data-i18n="hot_sour">東北酸菜白肉鍋</option>
+								<option value="紅燒羊肉鍋" data-i18n="hot_lamb">紅燒羊肉鍋</option>
+								<option value="養生藥膳火鍋" data-i18n="hot_herb">養生藥膳火鍋</option>
+							</select>
+							<p class="text-xs text-amber-600 mt-2 font-bold" data-i18n="food_din_notice">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
+						</div>
+					</div>
+
+					<div class="space-y-4 mt-8">
+						<div class="border-b border-slate-100 pb-2">
+							<label class="block text-lg font-bold text-sky-900 flex items-center">
+								<span class="mr-2">✨</span>
+								<span data-i18n="book_extra_title">額外服務需求</span>
+							</label>
+						</div>
+						<div class="pt-2">
+							<label class="flex items-center p-4 bg-white border border-slate-200 rounded-xl hover:bg-sky-50 cursor-pointer transition shadow-sm">
+								<input type="checkbox" name="extra_bed" class="w-6 h-6 text-sky-600 rounded border-slate-300 focus:ring-sky-500">
+								<span class="ml-4 text-md font-medium text-slate-700" data-i18n="book_extra_bed">我需要額外加床 (Extra Bed)</span>
+							</label>
+						</div>
+					</div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700" data-i18n="book_notes">備註與特殊需求</label>
+                        <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none transition" placeholder="例如：預計到達時間、食物過敏等..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-sky-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-sky-800 transition shadow-lg transform hover:-translate-y-1">
+                        <span data-i18n="book_submit_btn">送出預約需求表單</span>
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400" data-i18n="book_privacy">送出後即表示同意本山莊之訂房規定與隱私條款</p>
+                </form>
+            </div>
+        </div>
+    </section>
+	
     <section id="food" class="py-20 bg-slate-50">
         <div class="container mx-auto px-6">
             <h3 class="text-3xl font-bold mb-12 text-center text-sky-950" data-i18n="nav_food">特色餐飲</h3>
@@ -569,6 +712,61 @@
             applyTranslations();
             localStorage.setItem('preferredLang', currentLang);
         }
+		// 各房型的最大間數限制
+		const roomLimits = {
+			"兩人套房": 4,
+			"四人套房": 4,
+			"六人套房": 3,
+			"八人房": 1,
+			"家庭八人房": 1
+		};
+
+		// 增加一列房型
+		// 更新後的增加房型函式 (配合新的 HTML 結構與樣式)
+		function addRoomRow() {
+			const container = document.getElementById('room-selection-container');
+			const newRow = document.createElement('div');
+			// 使用新的 flex 結構與樣式類別
+			newRow.className = 'room-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm mt-3';
+			
+			newRow.innerHTML = `
+				<div class="w-full sm:flex-1">
+					<select name="room_type[]" onchange="updateQuantityLimit(this)" required class="room-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
+						<option value="">請選擇房型</option>
+						<option value="兩人套房">兩人套房</option>
+						<option value="四人套房">四人套房</option>
+						<option value="六人套房">六人套房</option>
+						<option value="八人房">八人房</option>
+						<option value="家庭八人房">家庭八人房</option>
+					</select>
+				</div>
+				<div class="flex items-center space-x-2 w-full sm:w-auto justify-end bg-white p-1 rounded-xl border border-slate-200">
+					<input type="number" name="room_quantity[]" min="1" value="1" required class="room-qty-input w-16 px-2 py-2 rounded-lg border-0 outline-none focus:ring-0 transition text-center font-bold text-sky-900 text-lg">
+					<span class="text-sm text-slate-500 font-bold pr-2">間</span>
+					<button type="button" onclick="this.closest('.room-row').remove()" class="text-rose-400 hover:text-rose-600 hover:bg-rose-50 w-8 h-8 rounded-full flex items-center justify-center transition">
+						<span class="text-xl font-bold leading-none">&times;</span>
+					</button>
+				</div>
+			`;
+			container.appendChild(newRow);
+		}
+
+		// 根據選擇的房型更新數量上限
+		function updateQuantityLimit(selectElement) {
+			const row = selectElement.closest('.room-row');
+			const qtyInput = row.querySelector('.room-qty-input');
+			const selectedRoom = selectElement.value;
+			
+			if (roomLimits[selectedRoom]) {
+				qtyInput.max = roomLimits[selectedRoom];
+				// 如果目前填的數字超過上限，自動修正
+				if (parseInt(qtyInput.value) > roomLimits[selectedRoom]) {
+					qtyInput.value = roomLimits[selectedRoom];
+				}
+			} else {
+				qtyInput.removeAttribute('max');
+			}
+		}
 
         // 3. 渲染翻譯內容
         function applyTranslations() {
@@ -611,6 +809,59 @@
                 console.error('語系檔讀取失敗:', error);
             }
         };
+		// 引入 EmailJS SDK (這行可以放在 head 或這裡)
+		(function(){
+			var s = document.createElement("script");
+			s.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js";
+			s.onload = function() {
+				emailjs.init(K6tL98qvtQnSIl_yP); // ⚠️ 請替換成您的 EmailJS Public Key
+			};
+			document.head.appendChild(s);
+		})();
+
+		// 表單送出處理  // 替換掉原本的整個 submit 監聽器
+		document.getElementById('booking-form').addEventListener('submit', function(event) {
+			event.preventDefault();
+			
+			// 1. 抓取所有房型並組合成一段文字
+			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
+			const roomQtys = document.querySelectorAll('input[name="room_quantity[]"]');
+			let roomSummary = "";
+			roomTypes.forEach((select, index) => {
+				if(select.value) {
+					roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
+				}
+			});
+
+			const btn = document.getElementById('submit-btn');
+			btn.disabled = true;
+			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
+
+			// 2. 建立要送給 EmailJS 範本的參數包
+			const templateParams = {
+				user_name: this.user_name.value,
+				user_phone: this.user_phone.value,
+				user_email: this.user_email.value,
+				checkin_date: this.checkin_date.value,
+				checkout_date: this.checkout_date.value,
+				num_adults: this.num_adults.value,
+				num_children: this.num_children.value,
+				dinner_order: this.dinner_order.value,
+				extra_bed: this.extra_bed.checked ? "是" : "否",
+				message: this.message.value,
+				room_details: roomSummary // 對應 EmailJS 的 {{room_details}}
+			};
+
+			// 3. 送出
+			emailjs.send(service_o0gr4cg, template_fnkdbki, templateParams)
+				.then(() => {
+					alert((currentLang === 'zh') ? '預約已送出！' : 'Sent!');
+					location.reload(); // 成功後重新整理
+				}, (err) => {
+					alert('失敗: ' + JSON.stringify(err));
+					btn.disabled = false;
+				});
+		});
     </script>
 </body>
 </html>
