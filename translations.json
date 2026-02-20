@@ -117,7 +117,7 @@
         "refund_t": "Cancellation Policy", "refund_law": "In accordance with Nantou County Government regulations:",
         "ref_14": "14 days prior", "ref_100": "100% Refund", "ref_10": "10-13 days prior", "ref_70": "70% Refund", "ref_7": "7-9 days prior", "ref_50": "50% Refund", "ref_4": "4-6 days prior", "ref_40": "40% Refund", "ref_2": "2-3 days prior", "ref_30": "30% Refund", "ref_1": "1 day prior", "ref_20": "20% Refund", "ref_0": "Same day / No-show", "ref_0_p": "0% Refund",
         "food_br_t": "Breakfast", "food_br_d": "A complimentary Western breakfast is prepared for all staying guests.", "food_free": "Complimentary",
-        "food_din_t": "Specialty Hotpot", "food_din_notice": "※ Pre-order required at least one day before check-in",
+        "food_din_t": "Dinner: Specialty Hotpot", "food_din_notice": "※ Pre-order required at least one day before check-in",
         "hot_sour": "Sauerkraut & Pork Pot", "hot_lamb": "Braised Mutton Pot", "hot_herb": "Healthy Herbal Pot", "hot_veg": "Veggie Available",
         "p_2": "2 Persons", "p_3": "3 Persons", "p_4": "4 Persons", "p_5": "5 Persons",
         "hot_extra_t": "※ Add-ons", "hot_extra_d": "Extra ingredients: $100 / portion", "hot_side_t": "What's Included",
