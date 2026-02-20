@@ -809,12 +809,37 @@
                 console.error('語系檔讀取失敗:', error);
             }
         };
+		
+		// 日期防呆邏輯
+		function setupDateValidation() {
+			const checkinInput = document.getElementsByName('checkin_date')[0];
+			const checkoutInput = document.getElementsByName('checkout_date')[0];
+			
+			// 1. 設定入住日期最小值為「今天」
+			const today = new Date().toISOString().split('T')[0];
+			checkinInput.min = today;
+
+			// 2. 當入住日期改變時，自動更新退房日期的最小值
+			checkinInput.addEventListener('change', function() {
+				if (this.value) {
+					checkoutInput.min = this.value;
+					// 如果退房日期比新的入住日期還早，則清空退房日期
+					if (checkoutInput.value && checkoutInput.value < this.value) {
+						checkoutInput.value = '';
+					}
+				}
+			});
+		}
+
+		// 記得執行它
+		setupDateValidation();
+
 		// 引入 EmailJS SDK (這行可以放在 head 或這裡)
 		(function(){
 			var s = document.createElement("script");
 			s.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js";
 			s.onload = function() {
-				emailjs.init(K6tL98qvtQnSIl_yP); // ⚠️ 請替換成您的 EmailJS Public Key
+				emailjs.init('K6tL98qvtQnSIl_yP'); // ⚠️ 請替換成您的 EmailJS Public Key
 			};
 			document.head.appendChild(s);
 		})();
@@ -823,7 +848,7 @@
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
 			
-			// 1. 抓取所有房型並組合成一段文字
+			// 彙整房型
 			const roomTypes = document.querySelectorAll('select[name="room_type[]"]');
 			const roomQtys = document.querySelectorAll('input[name="room_quantity[]"]');
 			let roomSummary = "";
@@ -835,9 +860,9 @@
 
 			const btn = document.getElementById('submit-btn');
 			btn.disabled = true;
+			const originalText = btn.innerHTML;
 			btn.innerHTML = (currentLang === 'zh') ? '傳送中...' : 'Sending...';
 
-			// 2. 建立要送給 EmailJS 範本的參數包
 			const templateParams = {
 				user_name: this.user_name.value,
 				user_phone: this.user_phone.value,
@@ -849,17 +874,19 @@
 				dinner_order: this.dinner_order.value,
 				extra_bed: this.extra_bed.checked ? "是" : "否",
 				message: this.message.value,
-				room_details: roomSummary // 對應 EmailJS 的 {{room_details}}
+				room_details: roomSummary
 			};
 
-			// 3. 送出
-			emailjs.send(service_o0gr4cg, template_fnkdbki, templateParams)
+			// ⚠️ 請確保這裡的三個參數都有加引號 ""
+			emailjs.send("service_o0gr4cg", "您的_TEMPLATE_ID", templateParams)
 				.then(() => {
-					alert((currentLang === 'zh') ? '預約已送出！' : 'Sent!');
-					location.reload(); // 成功後重新整理
-				}, (err) => {
-					alert('失敗: ' + JSON.stringify(err));
+					alert((currentLang === 'zh') ? '預約需求已送出！' : 'Inquiry sent!');
+					location.reload(); 
+				})
+				.catch((err) => {
+					alert('傳送失敗，錯誤代碼：' + JSON.stringify(err));
 					btn.disabled = false;
+					btn.innerHTML = originalText;
 				});
 		});
     </script>
