@@ -909,7 +909,18 @@
 				if(select.value) roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
 			});
 
-			// 準備發送參數
+			// 準備發送參數前，先將日期加上星期幾
+			const weekdaysZh = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+			const weekdaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+			const getWeekdayStr = (dateStr) => {
+				if (!dateStr) return dateStr;
+				const d = new Date(dateStr);
+				if (isNaN(d)) return dateStr;
+				const day = d.getDay();
+				const wd = currentLang === 'zh' ? weekdaysZh[day] : weekdaysEn[day];
+				return `${dateStr} (${wd})`;
+			};
+
 			const templateParams = {
 				booking_id: currentBookingID,
 				user_name: this.user_name.value,
@@ -917,8 +928,8 @@
 				user_email: this.user_email.value,
 				user_line_id: this.user_line_id.value || "未提供",
 				arrival_time: this.arrival_time.value || "未提供",
-				checkin_date: this.checkin_date.value,
-				checkout_date: this.checkout_date.value,
+				checkin_date: getWeekdayStr(this.checkin_date.value),
+				checkout_date: getWeekdayStr(this.checkout_date.value),
 				num_adults: this.num_adults.value,
 				num_children: this.num_children.value,
 				dinner_order: this.dinner_order.value,
