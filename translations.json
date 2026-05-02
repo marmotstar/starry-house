@@ -75,7 +75,11 @@
 		"nav_booking": "預約訂房",
 		"book_line_id": "LINE ID",
 		"book_arrival_time": "預計到達時間",
-		"book_notes_placeholder": "例如：食物過敏、是否需要接駁等..."
+		"book_notes_placeholder": "例如：食物過敏、是否需要接駁等...",
+		"dinner_size_auto": "與訂房人數相同",
+		"dinner_day_title": "第 {day} 天晚餐",
+		"book_add_day_dinner": "增加當日鍋物",
+		"dinner_pot_select": "請選擇鍋底"
     },
     "en": {
         "doc_title": "Starry House | Meeting in the clouds at 2106m",
@@ -153,6 +157,10 @@
 		"nav_booking": "Booking",
 		"book_line_id": "LINE ID",
 		"book_arrival_time": "Estimated Arrival Time",
-		"book_notes_placeholder": "e.g., food allergies, shuttle service needed, etc."
+		"book_notes_placeholder": "e.g., food allergies, shuttle service needed, etc.",
+		"dinner_size_auto": "Same as guests",
+		"dinner_day_title": "Day {day} Dinner",
+		"book_add_day_dinner": "Add pot for this day",
+		"dinner_pot_select": "Select soup base"
     }
 }

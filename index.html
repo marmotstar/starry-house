@@ -843,10 +843,10 @@
 				dayBlock.innerHTML = `
 					<div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b border-slate-100 pb-3 gap-2">
 						<h5 class="font-bold text-sky-800 text-lg flex items-center">
-							<span class="mr-2">🗓️</span>第 ${i + 1} 天晚餐 <span class="text-sm font-normal text-slate-500 ml-2">${displayDate}</span>
+							<span class="mr-2">🗓️</span><span data-i18n-day="${i + 1}">第 ${i + 1} 天晚餐</span> <span class="text-sm font-normal text-slate-500 ml-2">${displayDate}</span>
 						</h5>
 						<button type="button" onclick="addDinnerRow('day-container-${i}')" class="text-sky-600 hover:text-sky-800 text-sm font-bold flex items-center bg-sky-50 px-3 py-1 rounded-full transition w-fit">
-							<span class="text-xl mr-1 leading-none">+</span> 增加當日鍋物
+							<span class="text-xl mr-1 leading-none">+</span> <span data-i18n="book_add_day_dinner">增加當日鍋物</span>
 						</button>
 					</div>
 					<div id="day-container-${i}" class="space-y-3" data-date="${dateStr}">
@@ -857,6 +857,7 @@
 				// 預設加上一列空的選擇，不顯示刪除按鈕
 				addDinnerRow(`day-container-${i}`, false);
 			}
+			applyTranslations();
 		}
 
 		// 增加一列鍋物
@@ -876,20 +877,20 @@
 			newRow.innerHTML = `
 				<div class="w-full sm:flex-1">
 					<select name="dinner_type[]" onchange="updateDinnerRequirement(this)" class="dinner-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
-						<option value="">請選擇鍋底</option>
-						<option value="不預訂晚餐">不預訂晚餐 (No Dinner)</option>
-						<option value="東北酸菜白肉鍋">東北酸菜白肉鍋</option>
-						<option value="紅燒羊肉鍋">紅燒羊肉鍋</option>
-						<option value="養生藥膳火鍋">養生藥膳火鍋</option>
+						<option value="" data-i18n="dinner_pot_select">請選擇鍋底</option>
+						<option value="不預訂晚餐" data-i18n="book_dinner_none">不預訂晚餐 (No Dinner)</option>
+						<option value="東北酸菜白肉鍋" data-i18n="hot_sour">東北酸菜白肉鍋</option>
+						<option value="紅燒羊肉鍋" data-i18n="hot_lamb">紅燒羊肉鍋</option>
+						<option value="養生藥膳火鍋" data-i18n="hot_herb">養生藥膳火鍋</option>
 					</select>
 				</div>
 				<div class="w-full sm:flex-1">
 					<select name="dinner_size[]" class="dinner-size-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium" disabled>
-						<option value="與訂房人數相同">與訂房人數相同</option>
-						<option value="兩人份">兩人份</option>
-						<option value="三人份">三人份</option>
-						<option value="四人份">四人份</option>
-						<option value="五人份">五人份</option>
+						<option value="與訂房人數相同" data-i18n="dinner_size_auto">與訂房人數相同</option>
+						<option value="兩人份" data-i18n="p_2">兩人份</option>
+						<option value="三人份" data-i18n="p_3">三人份</option>
+						<option value="四人份" data-i18n="p_4">四人份</option>
+						<option value="五人份" data-i18n="p_5">五人份</option>
 					</select>
 				</div>
 				<div class="flex items-center space-x-2 w-full sm:w-auto justify-end p-1">
@@ -897,6 +898,7 @@
 				</div>
 			`;
 			container.appendChild(newRow);
+			applyTranslations();
 		}
 
         // 3. 渲染翻譯內容
@@ -918,6 +920,14 @@
 				if (placeholderKey && i18n[currentLang][placeholderKey]) {
 					el.setAttribute('placeholder', i18n[currentLang][placeholderKey]);
 				}
+			});
+
+			// --- 動態處理第 n 天標題的翻譯邏輯 ---
+			const dayElements = document.querySelectorAll('[data-i18n-day]');
+			dayElements.forEach(el => {
+				const dayIndex = el.getAttribute('data-i18n-day');
+				const tmpl = i18n[currentLang] ? (i18n[currentLang]['dinner_day_title'] || `第 {day} 天晚餐`) : `第 {day} 天晚餐`;
+				el.innerHTML = tmpl.replace('{day}', dayIndex);
 			});
 
 			// 特別處理按鈕文字與標題
