@@ -542,38 +542,21 @@
 					</div>
 
 					<div class="space-y-4 mt-8">
-						<div class="flex justify-between items-center border-b border-slate-100 pb-2">
+						<div class="border-b border-slate-100 pb-2">
 							<label class="block text-lg font-bold text-sky-900 flex items-center">
 								<span class="mr-2">🍲</span>
 								<span data-i18n="food_din_t">晚餐：特色火鍋</span>
 							</label>
-							<button type="button" onclick="addDinnerRow()" class="text-sky-600 hover:text-sky-800 text-sm font-bold flex items-center bg-sky-50 px-3 py-1 rounded-full transition">
-								<span class="text-xl mr-1 leading-none">+</span> <span data-i18n="book_add_dinner">增加鍋物</span>
-							</button>
 						</div>
-						<div id="dinner-selection-container" class="space-y-3 pt-2">
-							<div class="dinner-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm">
-								<div class="w-full sm:flex-1">
-									<select name="dinner_type[]" onchange="updateDinnerRequirement(this)" class="dinner-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
-										<option value="" data-i18n="book_dinner_none">不預訂晚餐 (No Dinner)</option>
-										<option value="東北酸菜白肉鍋" data-i18n="hot_sour">東北酸菜白肉鍋</option>
-										<option value="紅燒羊肉鍋" data-i18n="hot_lamb">紅燒羊肉鍋</option>
-										<option value="養生藥膳火鍋" data-i18n="hot_herb">養生藥膳火鍋</option>
-									</select>
-								</div>
-								<div class="w-full sm:flex-1">
-									<select name="dinner_size[]" class="dinner-size-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium" disabled>
-										<option value="與訂房人數相同" data-i18n="dinner_size_auto">與訂房人數相同</option>
-										<option value="兩人份" data-i18n="p_2">兩人份</option>
-										<option value="三人份" data-i18n="p_3">三人份</option>
-										<option value="四人份" data-i18n="p_4">四人份</option>
-										<option value="五人份" data-i18n="p_5">五人份</option>
-									</select>
-								</div>
-								<div class="flex items-center space-x-2 w-full sm:w-auto justify-end p-1">
-									<div class="w-8 h-8"></div>
-								</div>
-							</div>
+						
+						<!-- 提示區塊：在選擇日期前顯示 -->
+						<div id="dinner-date-prompt" class="p-6 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-center text-slate-500 font-bold mt-2">
+							<p>⚠️ 請先選擇上方的「入住日期」與「退房日期」，系統將為您展開每一天的晚餐選項。</p>
+						</div>
+
+						<!-- 動態產生的天數晚餐區塊 -->
+						<div id="dinner-selection-container" class="space-y-6 pt-2">
+							<!-- 這裡將由 JS 動態填入 -->
 						</div>
 						<p class="text-xs text-amber-600 mt-2 font-bold" data-i18n="food_din_notice">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
 					</div>
@@ -731,6 +714,18 @@
         let i18n = {};
         let currentLang = 'zh';
 
+		// 日期星期格式化函式
+		const weekdaysZh = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+		const weekdaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		function getWeekdayStr(dateStr) {
+			if (!dateStr) return dateStr;
+			const d = new Date(dateStr);
+			if (isNaN(d)) return dateStr;
+			const day = d.getDay();
+			const wd = currentLang === 'zh' ? weekdaysZh[day] : weekdaysEn[day];
+			return `${dateStr} (${wd})`;
+		}
+
         // 1. 頁籤切換邏輯
         function openTab(evt, tabName) {
             var i, tabContent, tabBtn;
@@ -823,16 +818,66 @@
 			}
 		}
 
-		// 增加一列鍋物
-		function addDinnerRow() {
+		// 動態渲染多天晚餐區塊
+		function renderDinnerDays(checkinStr, checkoutStr) {
 			const container = document.getElementById('dinner-selection-container');
+			const prompt = document.getElementById('dinner-date-prompt');
+			
+			const checkinDate = new Date(checkinStr);
+			const checkoutDate = new Date(checkoutStr);
+			const nights = Math.round((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+			
+			if (nights <= 0) return;
+			
+			prompt.style.display = 'none';
+			container.innerHTML = '';
+			
+			for (let i = 0; i < nights; i++) {
+				const currentDate = new Date(checkinDate);
+				currentDate.setDate(checkinDate.getDate() + i);
+				const dateStr = currentDate.toISOString().split('T')[0];
+				const displayDate = getWeekdayStr(dateStr);
+				
+				const dayBlock = document.createElement('div');
+				dayBlock.className = 'day-dinner-block bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative';
+				dayBlock.innerHTML = `
+					<div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b border-slate-100 pb-3 gap-2">
+						<h5 class="font-bold text-sky-800 text-lg flex items-center">
+							<span class="mr-2">🗓️</span>第 ${i + 1} 天晚餐 <span class="text-sm font-normal text-slate-500 ml-2">${displayDate}</span>
+						</h5>
+						<button type="button" onclick="addDinnerRow('day-container-${i}')" class="text-sky-600 hover:text-sky-800 text-sm font-bold flex items-center bg-sky-50 px-3 py-1 rounded-full transition w-fit">
+							<span class="text-xl mr-1 leading-none">+</span> 增加當日鍋物
+						</button>
+					</div>
+					<div id="day-container-${i}" class="space-y-3" data-date="${dateStr}">
+					</div>
+				`;
+				container.appendChild(dayBlock);
+				
+				// 預設加上一列空的選擇，不顯示刪除按鈕
+				addDinnerRow(`day-container-${i}`, false);
+			}
+		}
+
+		// 增加一列鍋物
+		function addDinnerRow(containerId, isRemovable = true) {
+			const container = document.getElementById(containerId);
+			if (!container) return;
+			
 			const newRow = document.createElement('div');
-			newRow.className = 'dinner-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm mt-3';
+			newRow.className = 'dinner-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm';
+			
+			const removeBtnHTML = isRemovable ? `
+				<button type="button" onclick="this.closest('.dinner-row').remove()" class="text-rose-400 hover:text-rose-600 hover:bg-rose-50 w-8 h-8 rounded-full flex items-center justify-center transition">
+					<span class="text-xl font-bold leading-none">&times;</span>
+				</button>
+			` : `<div class="w-8 h-8"></div>`;
 			
 			newRow.innerHTML = `
 				<div class="w-full sm:flex-1">
 					<select name="dinner_type[]" onchange="updateDinnerRequirement(this)" class="dinner-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
 						<option value="">請選擇鍋底</option>
+						<option value="不預訂晚餐">不預訂晚餐 (No Dinner)</option>
 						<option value="東北酸菜白肉鍋">東北酸菜白肉鍋</option>
 						<option value="紅燒羊肉鍋">紅燒羊肉鍋</option>
 						<option value="養生藥膳火鍋">養生藥膳火鍋</option>
@@ -848,9 +893,7 @@
 					</select>
 				</div>
 				<div class="flex items-center space-x-2 w-full sm:w-auto justify-end p-1">
-					<button type="button" onclick="this.closest('.dinner-row').remove()" class="text-rose-400 hover:text-rose-600 hover:bg-rose-50 w-8 h-8 rounded-full flex items-center justify-center transition">
-						<span class="text-xl font-bold leading-none">&times;</span>
-					</button>
+					${removeBtnHTML}
 				</div>
 			`;
 			container.appendChild(newRow);
@@ -916,16 +959,34 @@
 			const today = new Date().toISOString().split('T')[0];
 			checkinInput.min = today;
 
+			const triggerRender = () => {
+				if (checkinInput.value && checkoutInput.value) {
+					// 確認退房晚於入住
+					if (checkoutInput.value > checkinInput.value) {
+						renderDinnerDays(checkinInput.value, checkoutInput.value);
+					} else {
+						document.getElementById('dinner-selection-container').innerHTML = '';
+						document.getElementById('dinner-date-prompt').style.display = 'block';
+					}
+				} else {
+					document.getElementById('dinner-selection-container').innerHTML = '';
+					document.getElementById('dinner-date-prompt').style.display = 'block';
+				}
+			};
+
 			// 2. 當入住日期改變時，自動更新退房日期的最小值
 			checkinInput.addEventListener('change', function() {
 				if (this.value) {
 					checkoutInput.min = this.value;
 					// 如果退房日期比新的入住日期還早，則清空退房日期
-					if (checkoutInput.value && checkoutInput.value < this.value) {
+					if (checkoutInput.value && checkoutInput.value <= this.value) {
 						checkoutInput.value = '';
 					}
 				}
+				triggerRender();
 			});
+
+			checkoutInput.addEventListener('change', triggerRender);
 		}
 
 		// 記得執行它
@@ -976,32 +1037,34 @@
 				if(select.value) roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
 			});
 
-			// 彙整鍋物資訊
+			// 彙整鍋物資訊 (按天數)
 			let dinnerSummary = "";
-			const dinnerTypes = document.querySelectorAll('select[name="dinner_type[]"]');
-			const dinnerSizes = document.querySelectorAll('select[name="dinner_size[]"]');
-			let dinnerCount = 0;
-			dinnerTypes.forEach((select, index) => {
-				if(select.value && select.value !== "不預訂晚餐") {
-					dinnerSummary += `${select.value} (${dinnerSizes[index].value}); `;
-					dinnerCount++;
-				}
-			});
-			if (dinnerCount === 0) {
-				dinnerSummary = "不預訂晚餐";
+			const dayBlocks = document.querySelectorAll('.day-dinner-block');
+			
+			if (dayBlocks.length > 0) {
+				dayBlocks.forEach((block) => {
+					const dateStr = block.querySelector('[id^="day-container-"]').getAttribute('data-date');
+					const displayDate = getWeekdayStr(dateStr);
+					
+					let dailyPots = [];
+					const rows = block.querySelectorAll('.dinner-row');
+					rows.forEach(row => {
+						const type = row.querySelector('.dinner-type-select').value;
+						const size = row.querySelector('.dinner-size-select').value;
+						if (type && type !== "不預訂晚餐") {
+							dailyPots.push(`${type} (${size})`);
+						}
+					});
+					
+					if (dailyPots.length > 0) {
+						dinnerSummary += `【${displayDate}】${dailyPots.join("、")};\n`;
+					} else {
+						dinnerSummary += `【${displayDate}】不預訂晚餐;\n`;
+					}
+				});
+			} else {
+				dinnerSummary = "未選擇入住日期";
 			}
-
-			// 準備發送參數前，先將日期加上星期幾
-			const weekdaysZh = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-			const weekdaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-			const getWeekdayStr = (dateStr) => {
-				if (!dateStr) return dateStr;
-				const d = new Date(dateStr);
-				if (isNaN(d)) return dateStr;
-				const day = d.getDay();
-				const wd = currentLang === 'zh' ? weekdaysZh[day] : weekdaysEn[day];
-				return `${dateStr} (${wd})`;
-			};
 
 			const templateParams = {
 				booking_id: currentBookingID,
