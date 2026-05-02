@@ -542,21 +542,40 @@
 					</div>
 
 					<div class="space-y-4 mt-8">
-						<div class="border-b border-slate-100 pb-2">
+						<div class="flex justify-between items-center border-b border-slate-100 pb-2">
 							<label class="block text-lg font-bold text-sky-900 flex items-center">
 								<span class="mr-2">🍲</span>
 								<span data-i18n="food_din_t">晚餐：特色火鍋</span>
 							</label>
+							<button type="button" onclick="addDinnerRow()" class="text-sky-600 hover:text-sky-800 text-sm font-bold flex items-center bg-sky-50 px-3 py-1 rounded-full transition">
+								<span class="text-xl mr-1 leading-none">+</span> <span data-i18n="book_add_dinner">增加鍋物</span>
+							</button>
 						</div>
-						<div class="pt-2">
-							<select name="dinner_order" class="w-full px-4 py-4 border border-slate-200 rounded-xl text-md text-slate-700 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white font-medium">
-								<option value="不預訂晚餐" data-i18n="book_dinner_none">不預訂晚餐 (No Dinner)</option>
-								<option value="東北酸菜白肉鍋" data-i18n="hot_sour">東北酸菜白肉鍋</option>
-								<option value="紅燒羊肉鍋" data-i18n="hot_lamb">紅燒羊肉鍋</option>
-								<option value="養生藥膳火鍋" data-i18n="hot_herb">養生藥膳火鍋</option>
-							</select>
-							<p class="text-xs text-amber-600 mt-2 font-bold" data-i18n="food_din_notice">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
+						<div id="dinner-selection-container" class="space-y-3 pt-2">
+							<div class="dinner-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm">
+								<div class="w-full sm:flex-1">
+									<select name="dinner_type[]" onchange="updateDinnerRequirement(this)" class="dinner-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
+										<option value="" data-i18n="book_dinner_none">不預訂晚餐 (No Dinner)</option>
+										<option value="東北酸菜白肉鍋" data-i18n="hot_sour">東北酸菜白肉鍋</option>
+										<option value="紅燒羊肉鍋" data-i18n="hot_lamb">紅燒羊肉鍋</option>
+										<option value="養生藥膳火鍋" data-i18n="hot_herb">養生藥膳火鍋</option>
+									</select>
+								</div>
+								<div class="w-full sm:flex-1">
+									<select name="dinner_size[]" class="dinner-size-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium" disabled>
+										<option value="與訂房人數相同" data-i18n="dinner_size_auto">與訂房人數相同</option>
+										<option value="兩人份" data-i18n="p_2">兩人份</option>
+										<option value="三人份" data-i18n="p_3">三人份</option>
+										<option value="四人份" data-i18n="p_4">四人份</option>
+										<option value="五人份" data-i18n="p_5">五人份</option>
+									</select>
+								</div>
+								<div class="flex items-center space-x-2 w-full sm:w-auto justify-end p-1">
+									<div class="w-8 h-8"></div>
+								</div>
+							</div>
 						</div>
+						<p class="text-xs text-amber-600 mt-2 font-bold" data-i18n="food_din_notice">※ 僅供房客預訂，請最遲於入住前一天預訂</p>
 					</div>
 
 					<div class="space-y-4 mt-8">
@@ -789,6 +808,54 @@
 			}
 		}
 
+		// 根據選擇的鍋底更新份量必填與啟用狀態
+		function updateDinnerRequirement(selectElement) {
+			const row = selectElement.closest('.dinner-row');
+			const sizeSelect = row.querySelector('.dinner-size-select');
+			
+			if (selectElement.value !== "" && selectElement.value !== "不預訂晚餐") {
+				sizeSelect.disabled = false;
+				sizeSelect.required = true;
+			} else {
+				sizeSelect.disabled = true;
+				sizeSelect.required = false;
+				sizeSelect.value = "與訂房人數相同"; // 重置為預設
+			}
+		}
+
+		// 增加一列鍋物
+		function addDinnerRow() {
+			const container = document.getElementById('dinner-selection-container');
+			const newRow = document.createElement('div');
+			newRow.className = 'dinner-row flex flex-col sm:flex-row items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 relative shadow-sm mt-3';
+			
+			newRow.innerHTML = `
+				<div class="w-full sm:flex-1">
+					<select name="dinner_type[]" onchange="updateDinnerRequirement(this)" class="dinner-type-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium">
+						<option value="">請選擇鍋底</option>
+						<option value="東北酸菜白肉鍋">東北酸菜白肉鍋</option>
+						<option value="紅燒羊肉鍋">紅燒羊肉鍋</option>
+						<option value="養生藥膳火鍋">養生藥膳火鍋</option>
+					</select>
+				</div>
+				<div class="w-full sm:flex-1">
+					<select name="dinner_size[]" class="dinner-size-select w-full px-4 py-3 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-sky-500 transition bg-white text-slate-700 font-medium" disabled>
+						<option value="與訂房人數相同">與訂房人數相同</option>
+						<option value="兩人份">兩人份</option>
+						<option value="三人份">三人份</option>
+						<option value="四人份">四人份</option>
+						<option value="五人份">五人份</option>
+					</select>
+				</div>
+				<div class="flex items-center space-x-2 w-full sm:w-auto justify-end p-1">
+					<button type="button" onclick="this.closest('.dinner-row').remove()" class="text-rose-400 hover:text-rose-600 hover:bg-rose-50 w-8 h-8 rounded-full flex items-center justify-center transition">
+						<span class="text-xl font-bold leading-none">&times;</span>
+					</button>
+				</div>
+			`;
+			container.appendChild(newRow);
+		}
+
         // 3. 渲染翻譯內容
         function applyTranslations() {
 			if (!i18n[currentLang]) return;
@@ -909,6 +976,21 @@
 				if(select.value) roomSummary += `${select.value}: ${roomQtys[index].value}間; `;
 			});
 
+			// 彙整鍋物資訊
+			let dinnerSummary = "";
+			const dinnerTypes = document.querySelectorAll('select[name="dinner_type[]"]');
+			const dinnerSizes = document.querySelectorAll('select[name="dinner_size[]"]');
+			let dinnerCount = 0;
+			dinnerTypes.forEach((select, index) => {
+				if(select.value && select.value !== "不預訂晚餐") {
+					dinnerSummary += `${select.value} (${dinnerSizes[index].value}); `;
+					dinnerCount++;
+				}
+			});
+			if (dinnerCount === 0) {
+				dinnerSummary = "不預訂晚餐";
+			}
+
 			// 準備發送參數前，先將日期加上星期幾
 			const weekdaysZh = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 			const weekdaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -932,7 +1014,7 @@
 				checkout_date: getWeekdayStr(this.checkout_date.value),
 				num_adults: this.num_adults.value,
 				num_children: this.num_children.value,
-				dinner_order: this.dinner_order.value,
+				dinner_order: dinnerSummary,
 				extra_bed: this.extra_bed.checked ? "是" : "否",
 				message: this.message.value,
 				room_details: roomSummary
