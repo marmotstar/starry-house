@@ -79,7 +79,12 @@
 		"dinner_size_auto": "與訂房人數相同",
 		"dinner_day_title": "第 {day} 天晚餐",
 		"book_add_day_dinner": "增加當日鍋物",
-		"dinner_pot_select": "請選擇鍋底"
+		"dinner_pot_select": "請選擇鍋底",
+		"book_name_placeholder": "王小明",
+		"title_mr": "先生",
+		"title_ms": "小姐",
+		"title_other": "其他 (自行填寫)",
+		"title_custom_placeholder": "請輸入稱呼 (例如：博士、教授)"
     },
     "en": {
         "doc_title": "Starry House | Meeting in the clouds at 2106m",
@@ -161,6 +166,11 @@
 		"dinner_size_auto": "Same as guests",
 		"dinner_day_title": "Day {day} Dinner",
 		"book_add_day_dinner": "Add pot for this day",
-		"dinner_pot_select": "Select soup base"
+		"dinner_pot_select": "Select soup base",
+		"book_name_placeholder": "John Doe",
+		"title_mr": "Mr.",
+		"title_ms": "Ms.",
+		"title_other": "Other",
+		"title_custom_placeholder": "Enter title (e.g., Dr., Prof.)"
     }
 }
