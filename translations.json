@@ -84,7 +84,9 @@
 		"title_mr": "先生",
 		"title_ms": "小姐",
 		"title_other": "其他 (自行填寫)",
-		"title_custom_placeholder": "請輸入稱呼 (例如：博士、教授)"
+		"title_custom_placeholder": "請輸入稱呼 (例如：博士、教授)",
+		"book_arrival_time_placeholder": "例如：15:00",
+		"dinner_date_prompt": "⚠️ 請先選擇上方的「入住日期」與「退房日期」，系統將為您展開每一天的晚餐選項。"
     },
     "en": {
         "doc_title": "Starry House | Meeting in the clouds at 2106m",
@@ -171,6 +173,8 @@
 		"title_mr": "Mr.",
 		"title_ms": "Ms.",
 		"title_other": "Other",
-		"title_custom_placeholder": "Enter title (e.g., Dr., Prof.)"
+		"title_custom_placeholder": "Enter title (e.g., Dr., Prof.)",
+		"book_arrival_time_placeholder": "e.g., 15:00",
+		"dinner_date_prompt": "⚠️ Please select 'Check-in' and 'Check-out' dates above to view daily dinner options."
     }
 }
